@@ -9,9 +9,16 @@ public class Main {
         print("Welcome to Connect4. Rules are easy");
         print(" ".repeat(1));
         // ta kod från Thomas valKompassen
-       int player1 =  choosePlayers("Player 1: Are you a human or bot?");
+        Start();
+    }
+
+
+    private static void Start(){
+        // start with a no return ?? maybe need to change this later.
+        int player1 =  choosePlayers("Player 1: Are you a human or bot?");
         int player2 =  choosePlayers("Player 1: Are you a human or bot?");
         System.out.println(player1 + " " + player2);
+
     }
 
     private static int choosePlayers(String question){
