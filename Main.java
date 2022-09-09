@@ -8,29 +8,43 @@ public class Main {
         print("-".repeat(60));
         print("Welcome to Connect4. Rules are easy");
         print(" ".repeat(1));
-        // ta kod från Thomas valKompassen
+
         Start();
     }
 
 
-    private static void Start(){
+    private static void Start() {
         // start with a no return ?? maybe need to change this later.
-        int player1 =  choosePlayers("Player 1: Are you a human or bot?");
-        int player2 =  choosePlayers("Player 1: Are you a human or bot?");
-        System.out.println(player1 + " " + player2);
+
+        String player1 = Players.choosePlayers("Player 1: Are you a human or bot?");
+        String player2 = Players.choosePlayers("Player 2: Are you a human or bot?");
+
+        while (true) {
+            displayBoard();
+            dropElement();
+        }
 
     }
 
-    private static int choosePlayers(String question){
-        Scanner inputFromUsers = new Scanner(System.in);
-        print(question, "Human", "Crazy bot", "Advanced bot");
+    private static void dropElement(){
+        //todo change so it changes players after the previous player had mad it draw and checked for a win
+        //int row = Input.integer("Choose what row you want to put your coin", 1,7);
+        Board.dropToBoard(Players.currentPlayer, Input.integer("Choose what row you want to put your coin", 1,7));
+        System.out.println(Players.currentPlayer);
+        Players.changeCurrentPlayer();
+        Input.print(Players.currentPlayer);
+        Input.sleep(1500);
+    }
 
-        int userChoose = Integer.parseInt(inputFromUsers.nextLine());
-        return userChoose;
+    private static void displayBoard() {
+        //print("\n".repeat(60));
+        Board.drawBoard();
+
+        //print("\n".repeat(60));
     }
 
 
-    private static void print(String question, String... choices){
+    private static void print(String question, String... choices) {
         print(question);
         int number = 1;
         for (String choice : choices) {
@@ -40,7 +54,7 @@ public class Main {
     }
 
 
-    private static void print(String message){
+    private static void print(String message) {
         System.out.println(message);
     }
 }
