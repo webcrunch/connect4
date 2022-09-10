@@ -15,26 +15,29 @@ public class Main {
 
     private static void Start() {
         // start with a no return ?? maybe need to change this later.
-
+        // todo solwe problem with bot handling to currentPlayer
         String player1 = Players.choosePlayers("Player 1: Are you a human or bot?");
         if(player1 == "Human") Players.setPlayer(player1,1);
         else Players.setBot(player1,1);
         String player2 = Players.choosePlayers("Player 1: Are you a human or bot?");
         if(player2 == "Human") Players.setPlayer(player2,1);
         else Players.setBot(player2,2);
-        while (true) {
+        while (!CheckResult.notPlayingAnymore()) {
             displayBoard();
             playYourTurn();
         }
+        System.out.println(" player Won");
     }
 
     private static void playYourTurn(){
         //todo checked for a win and check if it is a boots turn
-
-        Board.dropToBoardPlayer(Players.currentPlayer, Input.integer("Choose what row you want to put your coin(between 0-6)", 0,6));
+        boolean checkForHumans = Players.botOrHumanPlayer(HumanBotInstance.currentPlayer);
+        if(checkForHumans) Board.dropToBoardPlayer(HumanBotInstance.currentPlayer, Input.integer("Choose what row you want to put your coin(between 0-6)", 0,6));
+        else BotPlaying.botPlaying(HumanBotInstance.currentPlayer);
+        //String a = checkForHumans ?  : Players.botPlaying(HumanBotInstance.currentPlayer);
         //todo check if the player has won
         Players.changeCurrentPlayer();
-        Input.print(Players.currentPlayer);
+        Input.print(HumanBotInstance.currentPlayer);
         Input.sleep(1500);
     }
 

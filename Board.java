@@ -24,7 +24,7 @@ public class Board {
 
     public static void drawBoard() {
         //System.out.format("It is %d time to play",Players.currentPlayer) ;
-        System.out.println("It is " + Players.currentPlayer + ": time to play");
+        System.out.println("It is " + HumanBotInstance.currentPlayer + ": time to play");
         WriteComponent.displayRowNumbers();
         System.out.println();
         for (String[] row : board) {
@@ -51,28 +51,12 @@ public class Board {
         // start with [floor][width]
         for (int floor = 5; floor >= 0; floor--){
             if(occupiedOrNot(width,floor)){
-                System.out.println(Players.currentIcon);
-                board[floor][width] = Players.currentIcon;
+                System.out.println(HumanBotInstance.currentIcon);
+                board[floor][width] = HumanBotInstance.currentIcon;
                 break;
             }
             else continue;
         }
-  //      board[1][6] = "X";
-        /*int minC = 0;
-        int maxC = 7;
-        int minR = 0;
-        int maxR = 6;
-        int random_intCol = (int) Math.floor(Math.random() * (maxC - minC + 1) + minC);
-        int random_intRow = (int) Math.floor(Math.random() * (maxR - minR + 1) + minR);
-        System.out.println(random_intRow + " <-row col-> " + random_intCol);
-        try {
-            //String color = Players.colorOfPlayer(player);
-            //System.out.println(color + " dddddddd");
-            board[random_intRow][random_intCol] = player;
-            Players.changeCurrentPlayer();
-        } catch (Exception ignore) {
-        }*/
-
         // todo check the rows column witch (rowcolumn) that is free.
     }
 }

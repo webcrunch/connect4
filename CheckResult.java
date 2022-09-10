@@ -1,5 +1,12 @@
 public class CheckResult {
-    public static void main(String[] args) {
+    public static boolean notPlayingAnymore(){
+        return false;
+    }
+    public static boolean tieTheBoard(){
+return false;
+    }
 
+    public  static boolean won(){
+        return false;
     }
 }
