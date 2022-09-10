@@ -17,20 +17,22 @@ public class Main {
         // start with a no return ?? maybe need to change this later.
 
         String player1 = Players.choosePlayers("Player 1: Are you a human or bot?");
-        String player2 = Players.choosePlayers("Player 2: Are you a human or bot?");
-
+        if(player1 == "Human") Players.setPlayer(player1,1);
+        else Players.setBot(player1,1);
+        String player2 = Players.choosePlayers("Player 1: Are you a human or bot?");
+        if(player2 == "Human") Players.setPlayer(player2,1);
+        else Players.setBot(player2,2);
         while (true) {
             displayBoard();
-            dropElement();
+            playYourTurn();
         }
-
     }
 
-    private static void dropElement(){
-        //todo change so it changes players after the previous player had mad it draw and checked for a win
-        //int row = Input.integer("Choose what row you want to put your coin", 1,7);
-        Board.dropToBoard(Players.currentPlayer, Input.integer("Choose what row you want to put your coin", 1,7));
-        System.out.println(Players.currentPlayer);
+    private static void playYourTurn(){
+        //todo checked for a win and check if it is a boots turn
+
+        Board.dropToBoardPlayer(Players.currentPlayer, Input.integer("Choose what row you want to put your coin(between 0-6)", 0,6));
+        //todo check if the player has won
         Players.changeCurrentPlayer();
         Input.print(Players.currentPlayer);
         Input.sleep(1500);
@@ -43,7 +45,6 @@ public class Main {
         //print("\n".repeat(60));
     }
 
-
     private static void print(String question, String... choices) {
         print(question);
         int number = 1;
@@ -52,7 +53,6 @@ public class Main {
             number++;
         }
     }
-
 
     private static void print(String message) {
         System.out.println(message);
