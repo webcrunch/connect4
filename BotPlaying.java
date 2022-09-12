@@ -5,14 +5,14 @@ public class BotPlaying {
         String[] player = Player.split("_");
         // todo working on a bad bot and and advanced bot;
         if(player[0].equals("Crazy bot")){
-            System.out.print(".".repeat(5));
-            System.out.print("..Thinking..");
-            System.out.print(".".repeat(5));
-            Input.sleep(1000);
+            System.out.print("." + ConsoleColors.BLUE_UNDERLINED.repeat(5));
+            System.out.print("..Thinking.." + ConsoleColors.BLUE_UNDERLINED);
+            System.out.print("." + ConsoleColors.BLUE_UNDERLINED.repeat(5));
+            ConsoleColors.colorReset();
+            Input.sleep(2000);
             System.out.println();
-            System.out.println("Bad bot is laying on a random column");
             Board.dropToBoardPlayer(HumanBotInstance.currentPlayer, Input.randomizer(0,6));
-            Input.sleep(1000);
+            Input.sleep(2000);
         }
         else{
             System.out.println("Good bot is playing");

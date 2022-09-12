@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Input {
@@ -60,7 +61,7 @@ public class Input {
         // Define two variables
         // one for the raw user input: answerAsString
         // and one for the input converted to int: answer
-        String answerAsString = "";
+        String answerAsString;
         int answer = 0;
         do {
             // ask the user and wait for input
@@ -146,6 +147,8 @@ public class Input {
     }
 
     public static int randomizer(int min, int max){
+        Random random = new Random();
+        //return random.nextInt(6);
         return (int) Math.floor(Math.random() * (max - min + 1) + min);
     }
 

@@ -1,6 +1,6 @@
-import java.util.Scanner;
-
+@SuppressWarnings("InfiniteLoopStatement")
 public class Main {
+
     public static void main(String[] args) {
         // Introduction for the user
         print("\n".repeat(60));
@@ -12,49 +12,37 @@ public class Main {
         Start();
     }
 
-
     private static void Start() {
         // start with a no return ?? maybe need to change this later.
-        // todo solwe problem with bot handling to currentPlayer
+        // todo solve problem with bot handling to currentPlayer
         String player1 = Players.choosePlayers("Player 1: Are you a human or bot?");
-        if(player1 == "Human") Players.setPlayer(player1,1);
+        if(player1.contains("Human")) Players.setPlayer(1);
         else Players.setBot(player1,1);
         String player2 = Players.choosePlayers("Player 1: Are you a human or bot?");
-        if(player2 == "Human") Players.setPlayer(player2,1);
+        if(player2.contains("Human")) Players.setPlayer(2);
         else Players.setBot(player2,2);
-        while (!CheckResult.notPlayingAnymore()) {
+        while (true) {
             displayBoard();
             playYourTurn();
         }
-        System.out.println(" player Won");
+        //System.out.println(" player Won");
     }
 
     private static void playYourTurn(){
+
         //todo checked for a win and check if it is a boots turn
         boolean checkForHumans = Players.botOrHumanPlayer(HumanBotInstance.currentPlayer);
         if(checkForHumans) Board.dropToBoardPlayer(HumanBotInstance.currentPlayer, Input.integer("Choose what row you want to put your coin(between 0-6)", 0,6));
         else BotPlaying.botPlaying(HumanBotInstance.currentPlayer);
-        //String a = checkForHumans ?  : Players.botPlaying(HumanBotInstance.currentPlayer);
         //todo check if the player has won
+        boolean won = CheckResult.isAWin();
+        System.out.println(won + "check if the action is perfect to win");
         Players.changeCurrentPlayer();
-        Input.print(HumanBotInstance.currentPlayer);
-        Input.sleep(1500);
+        Input.sleep(2000);
     }
 
     private static void displayBoard() {
-        //print("\n".repeat(60));
         Board.drawBoard();
-
-        //print("\n".repeat(60));
-    }
-
-    private static void print(String question, String... choices) {
-        print(question);
-        int number = 1;
-        for (String choice : choices) {
-            print(number + " " + choice);
-            number++;
-        }
     }
 
     private static void print(String message) {
