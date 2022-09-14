@@ -2,9 +2,9 @@ public class CheckResult {
 
     public static boolean tieTheBoard() {
         // check if we have a win, then it is not a tie
-        /* if(isAWin()){
+         if(isAWin()){
             return false;
-        }*/
+        }
         // otherwise check if the board is full, then it is a tie
         for (String[] row : Board.board) {
             for (String cell : row) {

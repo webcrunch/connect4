@@ -1,6 +1,8 @@
 @SuppressWarnings("InfiniteLoopStatement")
 public class Main {
-
+    public enum decizion {
+        YES, NO, TIE
+    }
     public static void main(String[] args) {
         // Introduction for the user
         print("\n".repeat(60));
@@ -23,28 +25,34 @@ public class Main {
         else Players.setBot(player2,2);
         while (true) {
             displayBoard();
-            boolean won = playYourTurn();
-            if(won) {
+            int checkPlay = playYourTurn();
+            if(checkPlay == 1) {
                 System.out.println("congratulation!!" + HumanAndBot.currentPlayer + " you won this time, Revenge!!! :) 2" ); break;
+            }
+            if(checkPlay == 2){
+                System.out.println("the game was tie, better luck to both next time"); break;
             }
         }
         //System.out.println(" player Won");
     }
 
-    private static boolean playYourTurn(){
+    private static int playYourTurn(){
 
         //todo checked for a win and check if it is a boots turn
         boolean checkForHumans = Players.botOrHumanPlayer(HumanAndBot.currentPlayer);
         if(checkForHumans) Board.dropToBoardPlayer(Input.integer("Choose what row you want to put your coin(between 0-6)", 0,6));
         else BotPlaying.botPlaying(HumanAndBot.currentPlayer);
         //todo check if the player has won
+        boolean tie = CheckResult.tieTheBoard();
+        if(tie) return 2;
+
         boolean won = CheckResult.isAWin();
         System.out.println(won + " check if the action is perfect to win");
-        if(won) return true;
+        if(won) return 1;
         HumanAndBot.lastDraw.clear();
         Players.changeCurrentPlayer();
         Input.sleep(2000);
-        return false;
+        return 0;
     }
 
     private static void displayBoard() {
