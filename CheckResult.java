@@ -50,9 +50,9 @@ public class CheckResult {
                 return true;
         }
 
-        // Check vertical left to right first
+        // Check vertical left to right
         for (int diagonalLoop = 0; diagonalLoop < 4; diagonalLoop++) {
-            if (diagonalLoop == 0 || diagonalLoop == 1) {
+            if (diagonalLoop == 0) {
                 for (int innerLoop = 0; innerLoop < 3; innerLoop++) {
                     if (Board.board[innerLoop][innerLoop].equals(p) && Board.board[innerLoop + 1][innerLoop + 1].equals(p) && Board.board[innerLoop + 2][innerLoop + 2].equals(p) && Board.board[innerLoop + 3][innerLoop + 3].equals(p))
                         return true;
@@ -76,6 +76,13 @@ public class CheckResult {
             }
             /*  */
         }
+        // Check vertical right to left
+          /*   for (int innerLoop = 6; innerLoop > 2; innerLoop--){
+
+                } */
+
+            /*  */
+
         return false;
     }
 

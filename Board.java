@@ -3,22 +3,22 @@ public class Board {
     public static String[][] board =
             {
                     {
-                            "", "", " ", " ", " ", " ", " "
+                            " "," "," "," "," "," "," "
                     },
                     {
-                            " ", "", "", " ", " ", " ", ""
+                            " ", " ", " ", " ", " "," ",""
                     },
                     {
-                            " ", " ", "", "", " ", " ", ""
+                            " "," "," "," "," "," "," "
                     },
                     {
-                            " ", " ", " ", "X", "", " ", ""
+                            " "," "," "," "," "," "," "
                     },
                     {
-                            " ", " ", " ", " ", "X", " ", ""
+                            " "," "," "," "," "," "," "
                     },
                     {
-                            " ", " ", " ", " ", " ", "X", ""
+                            " "," "," "," "," "," "," "
                     }
             };
 
@@ -55,7 +55,7 @@ public class Board {
                 System.out.println(floor + " floor and widht" + width);
                 //HumanAndBot.lastDraw.add(floor);
                 //HumanAndBot.lastDraw.add(width);
-                //board[floor][width] = inputToBoard ;
+                board[floor][width] = inputToBoard ;
                 break;
             }
 
