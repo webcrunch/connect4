@@ -37,9 +37,11 @@ public class CheckResult {
                     return true;
             }
         }
+        // problem med index 6 out of bounds for length 6 ???
         for (int horizontal = 0; horizontal < 7; horizontal++) {
             for (int row = 0; row < 4; row++) {
-                if (Board.board[row][horizontal].equals(p) && Board.board[row + 1][horizontal].equals(p) && Board.board[row + 2][horizontal].equals(p) && Board.board[row + 3][horizontal].equals(p))
+
+                if ((row + 3 < 6) && Board.board[row][horizontal].equals(p) && Board.board[row + 1][horizontal].equals(p) && Board.board[row + 2][horizontal].equals(p) && Board.board[row + 3][horizontal].equals(p))
                     return true;
             }
         }

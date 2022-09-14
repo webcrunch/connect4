@@ -45,7 +45,7 @@ public class Input {
             // or enters a number that is not in the list
             // to avoid a program crash use try
             try {
-                answer = choices[Integer.parseInt(in.nextLine()) - 1];
+                answer = choices[Integer.parseInt(in.nextLine()) - 1].trim();
             } catch (Exception ignore) {
                 // i don't care which error i get
             }
