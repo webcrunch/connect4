@@ -6,50 +6,59 @@ public class Board {
                             " ", " ", " ", " ", " ", " ", " "
                     },
                     {
-                            " ", " ", " ", " ", " ", " ", " "
+                            " ", " ", " ", " ", " ", " ", ""
                     },
                     {
-                            " ", " ", " ", " ", " ", " ", " "
+                            " ", " ", "X", "X", "X", "X", ""
                     },
                     {
-                            " ", " ", " ", " ", " ", " ", " "
+                            " ", " ", " ", " ", " ", " ", ""
                     },
                     {
-                            " ", " ", " ", " ", " ", " ", " "
+                            " ", " ", " ", " ", " ", " ", ""
                     },
                     {
-                            " ", " ", " ", " ", " ", " ", " "
+                            " ", " ", " ", " ", " ", " ", ""
                     }
             };
 
 
     public static void drawBoard() {
+        System.out.print(ConsoleColors.RESET);
         //System.out.format("It is %d time to play",Players.currentPlayer) ;
-        System.out.println("It is " + HumanBotInstance.currentPlayer + ": time to play");
+        System.out.println("It is " + HumanAndBot.currentPlayer + ": time to play");
         WriteComponent.displayRowNumbers();
+
         System.out.println();
         for (String[] row : board) {
             for (String cell : row) {
-                System.out.print("|  " + cell + "  ");
+                System.out.print("|  " +ConsoleColors.RESET + cell + ConsoleColors.RESET  + "  ");
             }
+            System.out.print(ConsoleColors.RESET);
             System.out.println("|");
             System.out.println("_____________________________________________");
         }
     }
 
-    private static boolean occupiedOrNot(int width, int floor) {
+    private static boolean occupiedOrNot( int floor, int width) {
         return board[floor][width].equals(" ");
     }
 
-    public static void dropToBoardPlayer(String player, int width) {
+    public static void dropToBoardPlayer(int width) {
         // check the bottom of the board and then go upwards
         // start with [floor][width]
+        System.out.println(HumanAndBot.currentIconColor);
+        String inputToBoard =  HumanAndBot.currentIcon;
+        //HumanAndBot.currentIconColor +
         for (int floor = 5; floor >= 0; floor--){
-            if(occupiedOrNot(width,floor)){
-                board[floor][width] = HumanBotInstance.currentIcon;
+            if(occupiedOrNot(floor,width)){
+                System.out.println(floor + " floor and widht" + width);
+                //HumanAndBot.lastDraw.add(floor);
+                //HumanAndBot.lastDraw.add(width);
+                //board[floor][width] = inputToBoard ;
                 break;
             }
-            else continue;
+
         }
         // todo check the rows column witch (row column) that is free.
     }

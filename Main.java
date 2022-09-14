@@ -23,22 +23,28 @@ public class Main {
         else Players.setBot(player2,2);
         while (true) {
             displayBoard();
-            playYourTurn();
+            boolean won = playYourTurn();
+            if(won) {
+                System.out.println("congratulation!!" + HumanAndBot.currentPlayer + " you won this time, Revenge!!! :) 2" ); break;
+            }
         }
         //System.out.println(" player Won");
     }
 
-    private static void playYourTurn(){
+    private static boolean playYourTurn(){
 
         //todo checked for a win and check if it is a boots turn
-        boolean checkForHumans = Players.botOrHumanPlayer(HumanBotInstance.currentPlayer);
-        if(checkForHumans) Board.dropToBoardPlayer(HumanBotInstance.currentPlayer, Input.integer("Choose what row you want to put your coin(between 0-6)", 0,6));
-        else BotPlaying.botPlaying(HumanBotInstance.currentPlayer);
+        boolean checkForHumans = Players.botOrHumanPlayer(HumanAndBot.currentPlayer);
+        if(checkForHumans) Board.dropToBoardPlayer(Input.integer("Choose what row you want to put your coin(between 0-6)", 0,6));
+        else BotPlaying.botPlaying(HumanAndBot.currentPlayer);
         //todo check if the player has won
         boolean won = CheckResult.isAWin();
-        System.out.println(won + "check if the action is perfect to win");
+        System.out.println(won + " check if the action is perfect to win");
+        if(won) return true;
+        HumanAndBot.lastDraw.clear();
         Players.changeCurrentPlayer();
         Input.sleep(2000);
+        return false;
     }
 
     private static void displayBoard() {

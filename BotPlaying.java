@@ -7,11 +7,13 @@ public class BotPlaying {
         if(player[0].equals("Crazy bot")){
             System.out.print("." + ConsoleColors.BLUE_UNDERLINED.repeat(5));
             System.out.print("..Thinking.." + ConsoleColors.BLUE_UNDERLINED);
+            System.out.print(ConsoleColors.RESET);
             System.out.print("." + ConsoleColors.BLUE_UNDERLINED.repeat(5));
-            ConsoleColors.colorReset();
+            System.out.print(ConsoleColors.WHITE);
             Input.sleep(2000);
             System.out.println();
-            Board.dropToBoardPlayer(HumanBotInstance.currentPlayer, Input.randomizer(0,6));
+            System.out.print(ConsoleColors.RESET);
+            Board.dropToBoardPlayer(Input.randomizer(0,6));
             Input.sleep(2000);
         }
         else{
