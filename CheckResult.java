@@ -33,24 +33,49 @@ public class CheckResult {
         // Check vertical to see if we get any four in a row.
         for (int vertical = 0; vertical < 6; vertical++) {
             for (int row = 0; row < 4; row++) {
-                if (Board.board[vertical][row].equals(p) && Board.board[vertical][row +1].equals(p) && Board.board[vertical][row +2 ].equals(p) && Board.board[vertical][row +3].equals(p))
+                if (Board.board[vertical][row].equals(p) && Board.board[vertical][row + 1].equals(p) && Board.board[vertical][row + 2].equals(p) && Board.board[vertical][row + 3].equals(p))
                     return true;
             }
         }
         for (int horizontal = 0; horizontal < 7; horizontal++) {
-
             for (int row = 0; row < 4; row++) {
                 if (Board.board[row][horizontal].equals(p) && Board.board[row + 1][horizontal].equals(p) && Board.board[row + 2][horizontal].equals(p) && Board.board[row + 3][horizontal].equals(p))
                     return true;
             }
         }
 
+        // Check vertical left to right first
+        for (int diagonalLoop = 0; diagonalLoop < 4; diagonalLoop++) {
+            if (Board.board[diagonalLoop][diagonalLoop].equals(p) && Board.board[diagonalLoop + 1][diagonalLoop + 1].equals(p) && Board.board[diagonalLoop + 2][diagonalLoop + 2].equals(p) && Board.board[diagonalLoop + 3][diagonalLoop + 3].equals(p))
+                return true;
+        }
 
-        /* for (int horz = 0; horz < 7; h )
-        for (int row = 0; row < 4; row++){
-        if(Board.board[1][row].equals(p) &&  Board.board[1][row + 1].equals(p) && Board.board[1][row + 2].equals(p) && Board.board[1][row + 3].equals(p) )return true;
-        } */
-
+        // Check vertical left to right first
+        for (int diagonalLoop = 0; diagonalLoop < 4; diagonalLoop++) {
+            if (diagonalLoop == 0 || diagonalLoop == 1) {
+                for (int innerLoop = 0; innerLoop < 3; innerLoop++) {
+                    if (Board.board[innerLoop][innerLoop].equals(p) && Board.board[innerLoop + 1][innerLoop + 1].equals(p) && Board.board[innerLoop + 2][innerLoop + 2].equals(p) && Board.board[innerLoop + 3][innerLoop + 3].equals(p))
+                        return true;
+                }
+                // 3 loops
+            } else if (diagonalLoop == 1) {
+                for (int innerLoop = 1; innerLoop < 4; innerLoop++) {
+                    if (Board.board[innerLoop][innerLoop].equals(p) && Board.board[innerLoop + 1][innerLoop + 1].equals(p) && Board.board[innerLoop + 2][innerLoop + 2].equals(p) && Board.board[innerLoop + 3][innerLoop + 3].equals(p))
+                        return true;
+                }
+            } else if (diagonalLoop == 2) {
+                {
+                    for (int innerLoop = 2; innerLoop < 4; innerLoop++) {
+                        if (Board.board[innerLoop][innerLoop].equals(p) && Board.board[innerLoop + 1][innerLoop + 1].equals(p) && Board.board[innerLoop + 2][innerLoop + 2].equals(p) && Board.board[innerLoop + 3][innerLoop + 3].equals(p))
+                            return true;
+                    }
+                }
+            } else {
+                if (Board.board[diagonalLoop][diagonalLoop].equals(p) && Board.board[diagonalLoop + 1][diagonalLoop + 1].equals(p) && Board.board[diagonalLoop + 2][diagonalLoop + 2].equals(p) && Board.board[diagonalLoop + 3][diagonalLoop + 3].equals(p))
+                    return true;
+            }
+            /*  */
+        }
         return false;
     }
 
