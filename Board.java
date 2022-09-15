@@ -3,25 +3,24 @@ public class Board {
     public static String[][] board =
             {
                     {
-                            " "," "," "," "," "," "," "
+                        " "," "," "," "," "," "," "
                     },
                     {
-                            " ", " ", " ", " ", " "," ",""
+                        " "," "," "," "," "," "," "
                     },
                     {
-                            " "," "," "," "," "," "," "
+                        " "," "," "," "," "," "," "
                     },
                     {
-                            " "," "," "," "," "," "," "
+                        " "," "," "," "," "," "," "
                     },
                     {
-                            "O"," "," "," "," "," "," "
+                        " "," "," "," "," "," "," "
                     },
                     {
-                            "O"," "," "," "," "," "," "
+                        " "," "," "," "," "," "," "
                     }
             };
-
 
     public static void drawBoard() {
         System.out.print(ConsoleColors.RESET);
@@ -52,7 +51,7 @@ public class Board {
         //HumanAndBot.currentIconColor +
         for (int floor = 5; floor >= 0; floor--){
             if(occupiedOrNot(floor,width)){
-                System.out.println(floor + " floor and widht" + width);
+                System.out.println(floor + " floor and width" + width);
                 //HumanAndBot.lastDraw.add(floor);
                 //HumanAndBot.lastDraw.add(width);
                 board[floor][width] = inputToBoard ;

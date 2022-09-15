@@ -16,4 +16,11 @@ public class HumanAndBot {
     public static boolean Player2Bot = false;
     public static  boolean Bot1Advanced = false;
     public static boolean Bot2Advanced = false;
+
+    public static void resetPlayer(){
+        HumanAndBot.currentPlayer = null;
+        HumanAndBot.Player1 = null;
+        HumanAndBot.Player2 = null;
+    }
+
 }
