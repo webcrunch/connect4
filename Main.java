@@ -42,7 +42,22 @@ public class Main {
                 }
             }
             if(checkPlay == 2){
-                System.out.println("the game was tie, better luck to both next time"); break;
+                Input.print("the game was tie, better luck to both next time");
+                String newGame = Input.menu("Do you want to play again?", "No i am finished", "Yes with same settings", "Yes with new settings");
+                if(newGame.equals("No i am finished")){
+                    Input.print("Thank you for playing");
+                    break;
+                }
+                if(newGame.equals("Yes with same settings")){
+                    HumanAndBot.currentPlayer = HumanAndBot.Player1;
+                    Board.resetBoard();
+                    continue;
+                }
+                if(newGame.equals("Yes with new settings")) {
+                    HumanAndBot.resetPlayer();
+                    Board.resetBoard();
+                    Main.Start();
+                }
             }
         }
     }
@@ -53,9 +68,9 @@ public class Main {
         if(checkForHumans) Board.dropToBoardPlayer(Input.integer("Choose what row you want to put your coin(between 0-6)", 0,6));
         else BotPlaying.botPlaying(HumanAndBot.currentPlayer);
         //todo check if the player has won
-        //boolean tie = CheckResult.tieTheBoard();
-        //if(tie) return 2;
-
+        boolean tie = CheckResult.tieTheBoard();
+        System.out.println(tie);
+        if(tie) return 2;
         boolean won = CheckResult.isAWin();
         System.out.println(won + " check if the action is perfect to win");
         if(won) return 1;
