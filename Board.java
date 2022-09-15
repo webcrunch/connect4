@@ -25,7 +25,8 @@ public class Board {
     public static void drawBoard() {
         System.out.print(ConsoleColors.RESET);
         //System.out.format("It is %d time to play",Players.currentPlayer) ;
-        System.out.println("It is " + HumanAndBot.currentPlayer + ": time to play");
+
+        System.out.println("It is " + HumanAndBot.currentPlayer + "(" + HumanAndBot.currentIcon + "): time to play");
         WriteComponent.displayRowNumbers();
 
         System.out.println();
