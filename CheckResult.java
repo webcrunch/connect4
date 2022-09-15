@@ -78,10 +78,37 @@ public class CheckResult {
             }
 
         }
-        // Check vertical right to left - hard coded for two patterns
-        if(Board.board[0][3].equals(p) && Board.board[2][1].equals(p) && Board.board[1][2].equals(p) && Board.board[3][0].equals(p) || Board.board[2][6].equals(p) && Board.board[3][5].equals(p) && Board.board[4][4].equals(p) && Board.board[5][5].equals(p) )return true;
+        // Check vertical right to left - hard coded for two patterns outer four in a row on the matrix (can only be one correct pattern)
+        if(Board.board[0][3].equals(p) && Board.board[1][2].equals(p) && Board.board[2][1].equals(p) && Board.board[3][0].equals(p) || Board.board[2][6].equals(p) && Board.board[3][5].equals(p) && Board.board[4][4].equals(p) && Board.board[5][5].equals(p) )return true;
 
-        // Checl vertical right to left
+
+        // Check vertical right to left - hard coded for other patterns
+
+        if(Board.board[0][4].equals(p) && Board.board[1][3].equals(p) && Board.board[2][2].equals(p) && Board.board[3][0].equals(p) || Board.board[2][6].equals(p) && Board.board[3][5].equals(p) && Board.board[4][4].equals(p) && Board.board[5][5].equals(p) )return true;
+
+        if(Board.board[1][6].equals(p) && Board.board[2][5].equals(p) && Board.board[3][4].equals(p) && Board.board[4][3].equals(p) || Board.board[2][5].equals(p) && Board.board[3][4].equals(p) && Board.board[4][3].equals(p) && Board.board[5][1].equals(p) )return true;
+
+        /*
+        * 3 st pattern x 2
+        *
+        * 0,5 | 1,4 | 2,3 | 3,2
+        * 2,3 | 3,2 | 4,1 | 5,0
+        * 1,4 | 2,3 | 3,2 | 4,1
+        *
+        * */
+
+        if(Board.board[0][5].equals(p) && Board.board[1][4].equals(p) && Board.board[2][3].equals(p) && Board.board[3][2].equals(p) || Board.board[2][3].equals(p) && Board.board[3][2].equals(p) && Board.board[4][1].equals(p) && Board.board[5][0].equals(p) || Board.board[1][4].equals(p) && Board.board[2][3].equals(p) && Board.board[3][2].equals(p) && Board.board[4][1].equals(p) )return true;
+
+        /*
+         * 3 st pattern x 2
+         *
+         * 0,6 | 1,5 | 2,4 | 3,3
+         * 1,5 | 2,4 | 3,3 | 4,2
+         * 2,4 | 3,3 | 4,2 | 5,1
+         *
+         * */
+        if(Board.board[0][6].equals(p) && Board.board[1][5].equals(p) && Board.board[2][4].equals(p) && Board.board[3][3].equals(p) || Board.board[1][5].equals(p) && Board.board[2][4].equals(p) && Board.board[3][3].equals(p) && Board.board[4][2].equals(p) || Board.board[2][4].equals(p) && Board.board[3][3].equals(p) && Board.board[4][2].equals(p) && Board.board[5][1].equals(p) )return true;
+
         return false;
     }
 
