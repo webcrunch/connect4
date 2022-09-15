@@ -27,6 +27,13 @@ public class Input {
         return string(question, question);
     }
 
+    public static String onlyString(String question){
+        String checkForStrings;
+        do{
+            checkForStrings = Input.string(question);
+        }while(checkForStrings.matches("^[^a-zA-Z]+$"));//.*[0-9].*
+        return checkForStrings;
+    }
     public static String menu(String question, String... choices){
         Scanner in = new Scanner(System.in);
         print(question);

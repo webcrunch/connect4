@@ -35,14 +35,14 @@ public class Players {
             //todo add colors to choose from and icons;
             HumanAndBot.currentPlayer = HumanAndBot.Player1 = Input.string("Whats your name player1?");
             HumanAndBot.iconPlayer1 = (Input.menu("Do you want to customise your icon for the player?", "Yes", "No") == "Yes" ?
-            Input.string("Choose a letter from the Alphabet (a-z) Default: O").toUpperCase() : "O");
+            Input.onlyString("Choose a letter from the Alphabet only (a-z) Default: O").toUpperCase() : "O");
             HumanAndBot.currentIcon = HumanAndBot.iconPlayer1;
         }
         else {
             //todo add colors to choose from and icons;
             HumanAndBot.Player2 = Input.string("Whats your name player2?");
             HumanAndBot.iconPlayer2 = (Input.menu("Do you want to customise your icon for the player?", "Yes", "No") == "Yes" ?
-                    Input.string("Choose a letter from the Alphabet (a-z) Default: X ").toUpperCase() : "X");
+                    Input.onlyString("Choose a letter from the Alphabet only (a-z) Default: X ").toUpperCase() : "X");
         }
     }
 }
