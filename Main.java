@@ -32,12 +32,12 @@ public class Main {
                 }
                 if(newGame.equals("Yes with same settings")){
                         HumanAndBot.currentPlayer = HumanAndBot.Player1;
-                        Board.board = empty;
+                        Board.resetBoard();
                         continue;
                 }
                 if(newGame.equals("Yes with new settings")) {
                     HumanAndBot.resetPlayer();
-                    Board.board = empty;
+                    Board.resetBoard();
                     Main.Start();
                 }
             }

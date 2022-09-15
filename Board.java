@@ -3,24 +3,32 @@ public class Board {
     public static String[][] board =
             {
                     {
-                        " "," "," "," "," "," "," "
+                            " ", " ", " ", " ", " ", " ", " "
                     },
                     {
-                        " "," "," "," "," "," "," "
+                            " ", " ", " ", " ", " ", " ", " "
                     },
                     {
-                        " "," "," "," "," "," "," "
+                            " ", " ", " ", " ", " ", " ", " "
                     },
                     {
-                        " "," "," "," "," "," "," "
+                            " ", " ", " ", " ", " ", " ", " "
                     },
                     {
-                        " "," "," "," "," "," "," "
+                            " ", " ", " ", " ", " ", " ", " "
                     },
                     {
-                        " "," "," "," "," "," "," "
+                            " ", " ", " ", " ", " ", " ", " "
                     }
             };
+
+    public static void resetBoard() {
+        for (int down = 0; down < 6; down++) {
+            for (int right = 0; right < 7; right++) {
+                Board.board[down][right] = " ";
+            }
+        }
+    }
 
     public static void drawBoard() {
         System.out.print(ConsoleColors.RESET);
@@ -32,7 +40,7 @@ public class Board {
         System.out.println();
         for (String[] row : board) {
             for (String cell : row) {
-                System.out.print("|  " +ConsoleColors.RESET + cell + ConsoleColors.RESET  + "  ");
+                System.out.print("|  " + ConsoleColors.RESET + cell + ConsoleColors.RESET + "  ");
             }
             System.out.print(ConsoleColors.RESET);
             System.out.println("|");
@@ -40,7 +48,7 @@ public class Board {
         }
     }
 
-    private static boolean occupiedOrNot( int floor, int width) {
+    private static boolean occupiedOrNot(int floor, int width) {
         return board[floor][width].equals(" ");
     }
 
@@ -48,14 +56,14 @@ public class Board {
         // check the bottom of the board and then go upwards
         // start with [floor][width]
         System.out.println(HumanAndBot.currentIconColor);
-        String inputToBoard =  HumanAndBot.currentIcon;
+        String inputToBoard = HumanAndBot.currentIcon;
         //HumanAndBot.currentIconColor +
-        for (int floor = 5; floor >= 0; floor--){
-            if(occupiedOrNot(floor,width)){
+        for (int floor = 5; floor >= 0; floor--) {
+            if (occupiedOrNot(floor, width)) {
                 System.out.println(floor + " floor and width" + width);
                 //HumanAndBot.lastDraw.add(floor);
                 //HumanAndBot.lastDraw.add(width);
-                board[floor][width] = inputToBoard ;
+                board[floor][width] = inputToBoard;
                 break;
             }
 

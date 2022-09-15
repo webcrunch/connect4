@@ -37,7 +37,7 @@ public class CheckResult {
                     return true;
             }
         }
-        // problem med index 6 out of bounds for length 6 ???
+        // Check orizontal to see if we get any four in a row.
         for (int horizontal = 0; horizontal < 7; horizontal++) {
             for (int row = 0; row < 4; row++) {
 
@@ -76,15 +76,12 @@ public class CheckResult {
                 if (Board.board[diagonalLoop][diagonalLoop].equals(p) && Board.board[diagonalLoop + 1][diagonalLoop + 1].equals(p) && Board.board[diagonalLoop + 2][diagonalLoop + 2].equals(p) && Board.board[diagonalLoop + 3][diagonalLoop + 3].equals(p))
                     return true;
             }
-            /*  */
+
         }
-        // Check vertical right to left
-          /*   for (int innerLoop = 6; innerLoop > 2; innerLoop--){
+        // Check vertical right to left - hard coded for two patterns
+        if(Board.board[0][3].equals(p) && Board.board[2][1].equals(p) && Board.board[1][2].equals(p) && Board.board[3][0].equals(p) || Board.board[2][6].equals(p) && Board.board[3][5].equals(p) && Board.board[4][4].equals(p) && Board.board[5][5].equals(p) )return true;
 
-                } */
-
-            /*  */
-
+        // Checl vertical right to left
         return false;
     }
 
