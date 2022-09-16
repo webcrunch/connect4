@@ -2,7 +2,7 @@ public class CheckResult {
 
     public static boolean tieTheBoard() {
         // check if we have a win, then it is not a tie
-         if(isAWin()){
+         if(isTwoWin()){
             return false;
         }
         // otherwise check if the board is full, then it is a tie
@@ -18,6 +18,54 @@ public class CheckResult {
         return true;
     }
 
+
+    public static boolean isTwoWin(){
+        String p = HumanAndBot.currentIcon;
+        for (int rad = 0; rad < Board.board.length; rad++) {
+            for (int kol = 0; kol < Board.board[0].length - 3; kol++) {
+                if (Board.board[rad][kol] == p &&
+                        Board.board[rad][kol + 1] == p &&
+                        Board.board[rad][kol + 2] == p &&
+                        Board.board[rad][kol + 3] == p){
+                    return true;
+                }
+            }
+        }
+        // kolla efter 4 i rad uppåt och neråt
+        for (int rad = 0; rad < Board.board.length - 3; rad++) {
+            for (int kol = 0; kol < Board.board[0].length; kol++) {
+                if (Board.board[rad][kol] == p  &&
+                        Board.board[rad + 1][kol] == p  &&
+                        Board.board[rad + 2][kol] == p  &&
+                        Board.board[rad + 3][kol] == p) {
+                    return true;
+                }
+            }
+        }
+        // kolla efter 4 i rad diagonalt upp
+
+        for (int rad = 3; rad < Board.board.length; rad++) {
+            for (int kol = 0; kol < Board.board[0].length - 3; kol++) {
+                if (Board.board[rad][kol] == p  &&
+                        Board.board[rad - 1][kol + 1] == p  &&
+                        Board.board[rad - 2][kol + 2] == p  &&
+                        Board.board[rad - 3][kol + 3] == p) {
+                    return true;
+                }
+            }
+        }
+        for (int rad = 0; rad < Board.board.length - 3; rad++) {
+            for (int kol = 0; kol < Board.board[0].length - 3; kol++) {
+                if (Board.board[rad][kol] == p  &&
+                        Board.board[rad + 1][kol + 1] == p  &&
+                        Board.board[rad + 2][kol + 2] == p  &&
+                        Board.board[rad + 3][kol + 3] == p) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     public static boolean isAWin() {
         //int length,int height

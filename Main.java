@@ -71,7 +71,7 @@ public class Main {
         boolean tie = CheckResult.tieTheBoard();
         System.out.println(tie);
         if(tie) return 2;
-        boolean won = CheckResult.isAWin();
+        boolean won = CheckResult.isTwoWin();
         System.out.println(won + " check if the action is perfect to win");
         if(won) return 1;
         HumanAndBot.lastDraw.clear();
