@@ -22,10 +22,12 @@ public class Players {
         if(whatBot == 1) {
             HumanAndBot.currentPlayer = HumanAndBot.Player1 = bot + "_1";
             HumanAndBot.Player1Bot = true;
+            HumanAndBot.currentIcon = HumanAndBot.iconPlayer1 = "X";
             if(bot.equals("Advanced bot")) HumanAndBot.Bot1Advanced = true;
         }else{
             HumanAndBot.Player2 = bot + "_2";
             HumanAndBot.Player2Bot = true;
+            HumanAndBot.iconPlayer2 = "O";
             if(bot.equals("Advanced bot")) HumanAndBot.Bot2Advanced = true;
         }
     }

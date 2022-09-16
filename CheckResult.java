@@ -37,7 +37,7 @@ public class CheckResult {
                     return true;
             }
         }
-        // Check orizontal to see if we get any four in a row.
+        // Check horizontal to see if we get any four in a row.
         for (int horizontal = 0; horizontal < 7; horizontal++) {
             for (int row = 0; row < 4; row++) {
 

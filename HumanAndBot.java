@@ -23,4 +23,5 @@ public class HumanAndBot {
         HumanAndBot.Player2 = null;
     }
 
+
 }
