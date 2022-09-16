@@ -31,7 +31,7 @@ public class Input {
         String checkForStrings;
         do{
             checkForStrings = Input.string(question);
-        }while(checkForStrings.matches("^[^a-zA-Z]+$"));//.*[0-9].*
+        }while(!checkForStrings.matches("^[a-zA-Z]?$"));//.*[0-9].*
         return checkForStrings;
     }
     public static String menu(String question, String... choices){

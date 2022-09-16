@@ -1,8 +1,8 @@
 
 public class Players {
 
-    public static boolean botOrHumanPlayer(String Players){
-        String[] player = Players.split("_");
+    public static boolean botOrHumanPlayer(){
+        String[] player = HumanAndBot.currentPlayer.split("_");
         return  !player[0].contains("bot");
     }
 
@@ -37,14 +37,14 @@ public class Players {
             //todo add colors to choose from and icons;
             HumanAndBot.currentPlayer = HumanAndBot.Player1 = Input.string("Whats your name player1?");
             HumanAndBot.iconPlayer1 = (Input.menu("Do you want to customise your icon for the player?", "Yes", "No") == "Yes" ?
-            Input.onlyString("Choose a letter from the Alphabet only (a-z) Default: O").toUpperCase() : "O");
+            Input.onlyString("Choose a letter from the Alphabet only (a-z) and max 1 character. Default: O").toUpperCase() : "O");
             HumanAndBot.currentIcon = HumanAndBot.iconPlayer1;
         }
         else {
             //todo add colors to choose from and icons;
             HumanAndBot.Player2 = Input.string("Whats your name player2?");
             HumanAndBot.iconPlayer2 = (Input.menu("Do you want to customise your icon for the player?", "Yes", "No") == "Yes" ?
-                    Input.onlyString("Choose a letter from the Alphabet only (a-z) Default: X ").toUpperCase() : "X");
+                    Input.onlyString("Choose a letter from the Alphabet only (a-z) and max 1 character. Default: X ").toUpperCase() : "X");
         }
     }
 }

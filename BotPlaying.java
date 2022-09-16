@@ -1,9 +1,9 @@
 public class BotPlaying {
 
-    public static void botPlaying(String Player){
+    public static void botPlaying(){
         // need to remove the _number to handle what kind of bot we are working with
-        String[] player = Player.split("_");
-        // todo working on a bad bot and and advanced bot;
+        String[] player = HumanAndBot.currentPlayer.split("_");
+        // todo working on a advanced bot;
         if(player[0].equals("Crazy bot")){
             System.out.print("." + ConsoleColors.BLUE_UNDERLINED.repeat(5));
             System.out.print("..Thinking.." + ConsoleColors.BLUE_UNDERLINED);

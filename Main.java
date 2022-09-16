@@ -1,6 +1,5 @@
 public class Main {
 
-    private static String[][] empty = Board.board;
     public static void main(String[] args) {
         // Introduction for the user
         print("\n".repeat(60));
@@ -23,6 +22,7 @@ public class Main {
         while (true) {
             displayBoard();
             int checkPlay = playYourTurn();
+            // get a "ending" method with enum
             if(checkPlay == 1) {
                 Input.print("congratulation!!" + HumanAndBot.currentPlayer + " you won this time, Revenge!!! :) 2" );
                 String newGame = Input.menu("Do you want to play again?", "No i am finished", "Yes with same settings", "Yes with new settings");
@@ -63,15 +63,14 @@ public class Main {
     }
 
     private static int playYourTurn(){
-
-        boolean checkForHumans = Players.botOrHumanPlayer(HumanAndBot.currentPlayer);
+        boolean checkForHumans = Players.botOrHumanPlayer();
         if(checkForHumans) Board.dropToBoardPlayer(Input.integer("Choose what row you want to put your coin(between 0-6)", 0,6));
-        else BotPlaying.botPlaying(HumanAndBot.currentPlayer);
+        else BotPlaying.botPlaying();
         //todo check if the player has won
         boolean tie = CheckResult.tieTheBoard();
         System.out.println(tie);
         if(tie) return 2;
-        boolean won = CheckResult.isTwoWin();
+        boolean won = CheckResult.isAWin();
         System.out.println(won + " check if the action is perfect to win");
         if(won) return 1;
         HumanAndBot.lastDraw.clear();
