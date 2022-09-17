@@ -24,7 +24,7 @@ public class Main {
             int checkPlay = playYourTurn();
             // get a "ending" method with enum
             if(checkPlay == 1) {
-                Input.print("congratulation!!" + HumanAndBot.currentPlayer + " you won this time, Revenge!!! :) 2" );
+                Input.print("congratulation!! " + HumanAndBot.currentPlayer + " you won this time, Revenge for " + (HumanAndBot.currentPlayer.equals(HumanAndBot.Player1) ? HumanAndBot.Player2 : HumanAndBot.Player1) +  "!!! :) 2" );
                 String newGame = Input.menu("Do you want to play again?", "No i am finished", "Yes with same settings", "Yes with new settings");
                 if(newGame.equals("No i am finished")){
                     Input.print("Thank you for playing");
