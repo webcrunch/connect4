@@ -49,20 +49,18 @@ public class BotPlaying {
         }
     }
     private static boolean emptyBoardCheck() {
-        String p = HumanAndBot.currentIcon;
-        // check if we have a win, then it is not a tie
-        // otherwise check if the board is full, then it is a tie
+        int numberOfSpaces = 0;
         for (String[] row : Board.board) {
             for (String cell : row) {
-                if (p.contains(cell)) {
-                    // found an empty space, not a tie
-                    return false;
-                }
+              if (cell.equals(" ")) numberOfSpaces++;
             }
+
         }
-        // didn't return before, so it is a tie
-        return true;
+        if(numberOfSpaces == 6 * 7)
+            return true;
+        else return false;
     }
+
 
 
 }
