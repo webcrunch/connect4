@@ -6,7 +6,7 @@ public class HumanAndBot {
     public static ArrayList<Integer> lastDraw = new ArrayList<Integer>(); // Create an ArrayList object
     public static String iconColor1 = ConsoleColors.BLUE;
     public static String Player2;
-    public static String iconPlayer2 = "X" ;
+    public static String iconPlayer2;
     public static String iconColor2 =  ConsoleColors.YELLOW;
     public static String currentPlayer;
     public static String currentIcon;
@@ -22,6 +22,5 @@ public class HumanAndBot {
         HumanAndBot.Player1 = null;
         HumanAndBot.Player2 = null;
     }
-
 
 }

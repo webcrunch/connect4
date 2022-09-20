@@ -68,11 +68,11 @@ public class Main {
         else BotPlaying.botPlaying();
         //todo check if the player has won
         boolean tie = CheckResult.tieTheBoard();
-        System.out.println(tie);
+        //System.out.println(tie);
         if(tie) return 2;
         boolean won = CheckResult.isAWin();
-        System.out.println(won + " check if the action is perfect to win");
-        if(won) return 1;
+        //System.out.println(won + " check if the action is perfect to win");
+        //if(won) return 1;
         HumanAndBot.lastDraw.clear();
         Players.changeCurrentPlayer();
         Input.sleep(2000);

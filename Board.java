@@ -12,13 +12,13 @@ public class Board {
                             " ", " ", " ", " ", " ", " ", " "
                     },
                     {
-                            " ", " ", " ", " ", " ", " ", " "
+                            " ", " ", "X", " ", " ", " ", " "
                     },
                     {
-                            " ", " ", " ", " ", " ", " ", " "
+                            " ", " ", "X", " ", " ", " ", " "
                     },
                     {
-                            " ", " ", " ", " ", " ", " ", " "
+                            " ", " ", "X", " ", " ", " ", " "
                     }
             };
 
@@ -34,9 +34,7 @@ public class Board {
         int totalCount = 0;
         for (int down = 0; down < 6; down++) {
             for (int right = 0; right < 7; right++) {
-
-                totalCount = Board.board[down][right].equals(HumanAndBot.currentIcon) ||
-                        Board.board[down][right].equals(HumanAndBot.currentIcon) ? totalCount + 1 : totalCount;
+                totalCount = !Board.board[down][right].equals(" ") ? totalCount + 1 : totalCount;
             }
         }
         return totalCount;
@@ -73,7 +71,6 @@ public class Board {
         //HumanAndBot.currentIconColor +
         for (int floor = 5; floor >= 0; floor--) {
             if (occupiedOrNot(floor, width)) {
-                //System.out.println(floor + " floor and width" + width);
                 //HumanAndBot.lastDraw.add(floor);
                 //HumanAndBot.lastDraw.add(width);
                 board[floor][width] = inputToBoard;
@@ -81,6 +78,5 @@ public class Board {
             }
 
         }
-        // todo check the rows column witch (row column) that is free.
     }
 }

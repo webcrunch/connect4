@@ -28,39 +28,42 @@ public class BotPlaying {
             if (emptyBoardCheck()) {
                 Board.dropToBoardPlayer(3);
             } else {
-                Board.dropToBoardPlayer(checkForNextMove());
+                totalPieceOnTheBoard();
+                //Board.dropToBoardPlayer(totalPieceOnTheBoard());
             }
 
             Input.sleep(2000);
         }
     }
 
-    public static int checkForNextMove(){
-        return totalPieceOnTheBoard();
+    public static int checkForNextMove() {
+
+
+        String own = HumanAndBot.currentIcon;
+        String opp = HumanAndBot.currentPlayer.equals(HumanAndBot.Player1) ? HumanAndBot.iconPlayer2 : HumanAndBot.iconPlayer1;
+        System.out.println(own + "<-- own opp --> " + opp);
+        int result = MoveChecker.handleMovesFromBot(opp, own);
+
+        return Input.randomizer(0, 6);// checkForNextMove();
     }
 
-    private  static int totalPieceOnTheBoard(){
+    private static int totalPieceOnTheBoard() {
         int checkBoard = Board.countNumberOnTheBoard();
-        if(checkBoard < 2){
-            return Input.randomizer(0,1) == 1 ? 4 : 2;
-        }
-        else{
-            return Input.randomizer(0,6);
-        }
+        if (checkBoard < 2) return Input.randomizer(0, 1) == 1 ? 4 : 2;
+        else return checkForNextMove();
     }
+
     private static boolean emptyBoardCheck() {
         int numberOfSpaces = 0;
         for (String[] row : Board.board) {
             for (String cell : row) {
-              if (cell.equals(" ")) numberOfSpaces++;
+                if (cell.equals(" ")) numberOfSpaces++;
             }
 
         }
-        if(numberOfSpaces == 6 * 7)
-            return true;
-        else return false;
-    }
+        return (numberOfSpaces == 6 * 7) ? true : false;
 
+    }
 
 
 }
