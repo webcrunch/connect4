@@ -16,7 +16,7 @@ public class Main {
         String player1 = Players.choosePlayers("Player 1: Are you a human or bot?");
         if(player1.contains("Human")) Players.setPlayer(1);
         else Players.setBot(player1,1);
-        String player2 = Players.choosePlayers("Player 1: Are you a human or bot?");
+        String player2 = Players.choosePlayers("Player 2: Are you a human or bot?");
         if(player2.contains("Human")) Players.setPlayer(2);
         else Players.setBot(player2,2);
         while (true) {
