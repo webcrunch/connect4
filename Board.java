@@ -46,7 +46,7 @@ public class Board {
         //System.out.format("It is %d time to play",Players.currentPlayer) ;
 
         System.out.println("It is " + HumanAndBot.currentPlayer + "(" + HumanAndBot.currentIcon + "): time to play");
-        WriteComponent.displayRowNumbers();
+        displayRowNumbers();
 
         System.out.println();
         for (String[] row : board) {
@@ -63,6 +63,13 @@ public class Board {
         return board[floor][width].equals(" ");
     }
 
+    public static void displayRowNumbers(){
+        for (int i = 0; i < 7; i++) {
+            if (i == 6) System.out.print("   " + i + "  ");
+            else System.out.print("   " + i + "  ");
+        }
+    }
+
     public static void dropToBoardPlayer(int width) {
         // check the bottom of the board and then go upwards
         // start with [floor][width]
@@ -76,7 +83,6 @@ public class Board {
                 board[floor][width] = inputToBoard;
                 break;
             }
-
         }
     }
 }

@@ -31,7 +31,10 @@ public class Input {
         String checkForStrings;
         do{
             checkForStrings = Input.string(question);
-        }while(!checkForStrings.matches("^[a-zA-Z]?$"));//.*[0-9].*
+            System.out.println(checkForStrings + " " + HumanAndBot.iconPlayer1 + " " + checkForStrings.equals(HumanAndBot.iconPlayer1));
+            System.out.println(!checkForStrings.matches("^[a-zA-Z]?$"));
+            System.out.println(!checkForStrings.matches("^[a-zA-Z]?$") && checkForStrings.equals(HumanAndBot.iconPlayer1));
+        }while(!checkForStrings.matches("^[a-zA-Z]?$") || checkForStrings.equals(HumanAndBot.iconPlayer1)); //.*[0-9].*
         return checkForStrings;
     }
     public static String menu(String question, String... choices){
