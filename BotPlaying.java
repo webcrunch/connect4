@@ -3,7 +3,7 @@ public class BotPlaying {
     public static void botPlaying() {
         // need to remove the _number to handle what kind of bot we are working with
         String[] player = HumanAndBot.currentPlayer.split("_");
-        // todo working on a advanced bot;
+        // todo working on an advanced bot;
         if (player[0].equals("Crazy bot")) {
             System.out.print("." + ConsoleColors.BLUE_UNDERLINED.repeat(5));
             System.out.print("..Thinking.." + ConsoleColors.BLUE_UNDERLINED);
@@ -37,13 +37,10 @@ public class BotPlaying {
     }
 
     public static int checkForNextMove() {
-
-
         String own = HumanAndBot.currentIcon;
         String opp = HumanAndBot.currentPlayer.equals(HumanAndBot.Player1) ? HumanAndBot.iconPlayer2 : HumanAndBot.iconPlayer1;
         System.out.println(own + "<-- own opp --> " + opp);
         int result = MoveChecker.handleMovesFromBot(opp, own);
-
         return Input.randomizer(0, 6);// checkForNextMove();
     }
 
@@ -59,7 +56,6 @@ public class BotPlaying {
             for (String cell : row) {
                 if (cell.equals(" ")) numberOfSpaces++;
             }
-
         }
         return (numberOfSpaces == 6 * 7) ? true : false;
 

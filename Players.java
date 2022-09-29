@@ -21,29 +21,30 @@ public class Players {
     public static void setBot(String bot, int whatBot) {
         if(whatBot == 1) {
             HumanAndBot.currentPlayer = HumanAndBot.Player1 = bot + "_1";
-            HumanAndBot.Player1Bot = true;
+            HumanAndBot.isPlayer1Bot = true;
             HumanAndBot.currentIcon = HumanAndBot.iconPlayer1 = "X";
-            if(bot.equals("Advanced bot")) HumanAndBot.Bot1Advanced = true;
+            if(bot.equals("Advanced bot")) HumanAndBot.isBot1Advanced = true;
         }else{
             HumanAndBot.Player2 = bot + "_2";
-            HumanAndBot.Player2Bot = true;
+            HumanAndBot.isPlayer2Bot = true;
             HumanAndBot.iconPlayer2 = "O";
-            if(bot.equals("Advanced bot")) HumanAndBot.Bot2Advanced = true;
+            if(bot.equals("Advanced bot")) HumanAndBot.isBot2Advanced = true;
         }
     }
 
     public static void setPlayer(int whatPlayer){
+        System.out.println(whatPlayer);
         if(whatPlayer == 1) {
             //todo add colors to choose from and icons;
             HumanAndBot.currentPlayer = HumanAndBot.Player1 = Input.string("Whats your name player1?");
-            HumanAndBot.iconPlayer1 = (Input.menu("Do you want to customise your icon for the player?", "Yes", "No") == "Yes" ?
+            HumanAndBot.iconPlayer1 = (Input.menu("Do you want to customise your icon for the player?", "Yes", "No").equals("Yes") ?
             Input.onlyString("Choose a letter from the Alphabet only (a-z) and max 1 character. Default: O").toUpperCase() : "O");
             HumanAndBot.currentIcon = HumanAndBot.iconPlayer1;
         }
         else {
             //todo add colors to choose from and icons;
             HumanAndBot.Player2 = Input.string("Whats your name player2?");
-            HumanAndBot.iconPlayer2 = (Input.menu("Do you want to customise your icon for the player?", "Yes", "No") == "Yes" ?
+            HumanAndBot.iconPlayer2 = (Input.menu("Do you want to customise your icon for the player?", "Yes", "No").equals("Yes") ?
                     Input.onlyString("Choose a letter from the Alphabet only (a-z) and max 1 character. Default: X ").toUpperCase() : "X");
         }
     }

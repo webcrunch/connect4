@@ -5,62 +5,32 @@ public class Main {
         print("\n".repeat(60));
         print("Connect4 game");
         print("-".repeat(60));
+        //todo add rules.
         print("Welcome to Connect4. Rules are easy");
         print(" ".repeat(1));
-        Start();
+        initTheGame();
     }
 
-    private static void Start() {
-        // start with a no return ?? maybe need to change this later.
-        // todo solve problem with bot handling to currentPlayer
+    public static void initTheGame() {
         String player1 = Players.choosePlayers("Player 1: Are you a human or bot?");
         if(player1.contains("Human")) Players.setPlayer(1);
         else Players.setBot(player1,1);
         String player2 = Players.choosePlayers("Player 2: Are you a human or bot?");
         if(player2.contains("Human")) Players.setPlayer(2);
         else Players.setBot(player2,2);
+
+        startTheGame();
+    }
+
+    public static void startTheGame(){
         while (true) {
             displayBoard();
             int checkPlay = playYourTurn();
-            // get a "ending" method with enum
-            if(checkPlay == 1) {
-                Input.print("congratulation!! " + HumanAndBot.currentPlayer + " you won this time, Revenge for " + (HumanAndBot.currentPlayer.equals(HumanAndBot.Player1) ? HumanAndBot.Player2 : HumanAndBot.Player1) +  "!!! :) 2" );
-                String newGame = Input.menu("Do you want to play again?", "No i am finished", "Yes with same settings", "Yes with new settings");
-                if(newGame.equals("No i am finished")){
-                    Input.print("Thank you for playing");
-                    break;
-                }
-                if(newGame.equals("Yes with same settings")){
-                        HumanAndBot.currentPlayer = HumanAndBot.Player1;
-                        Board.resetBoard();
-                        continue;
-                }
-                if(newGame.equals("Yes with new settings")) {
-                    HumanAndBot.resetPlayer();
-                    Board.resetBoard();
-                    Main.Start();
-                }
-            }
-            if(checkPlay == 2){
-                Input.print("the game was tie, better luck to both next time");
-                String newGame = Input.menu("Do you want to play again?", "No i am finished", "Yes with same settings", "Yes with new settings");
-                if(newGame.equals("No i am finished")){
-                    Input.print("Thank you for playing");
-                    break;
-                }
-                if(newGame.equals("Yes with same settings")){
-                    HumanAndBot.currentPlayer = HumanAndBot.Player1;
-                    Board.resetBoard();
-                    continue;
-                }
-                if(newGame.equals("Yes with new settings")) {
-                    HumanAndBot.resetPlayer();
-                    Board.resetBoard();
-                    Main.Start();
-                }
-            }
+            if(checkPlay == 1)EndingHandling.handleEndings("End");
+            if(checkPlay == 2)EndingHandling.handleEndings("Tie");
         }
     }
+
 
     private static int playYourTurn(){
         boolean checkForHumans = Players.botOrHumanPlayer();
@@ -68,12 +38,9 @@ public class Main {
         else BotPlaying.botPlaying();
         //todo check if the player has won
         boolean tie = CheckResult.tieTheBoard();
-        //System.out.println(tie);
         if(tie) return 2;
         boolean won = CheckResult.isAWin();
-        //System.out.println(won + " check if the action is perfect to win");
-        //if(won) return 1;
-        HumanAndBot.lastDraw.clear();
+        if(won) return 1;
         Players.changeCurrentPlayer();
         Input.sleep(2000);
         return 0;

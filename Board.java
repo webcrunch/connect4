@@ -42,16 +42,15 @@ public class Board {
 
 
     public static void drawBoard() {
-        System.out.print(ConsoleColors.RESET);
-        //System.out.format("It is %d time to play",Players.currentPlayer) ;
+        //System.out.format("It is %d time to play",Players.currentPlayer);
 
         System.out.println("It is " + HumanAndBot.currentPlayer + "(" + HumanAndBot.currentIcon + "): time to play");
         displayRowNumbers();
 
         System.out.println();
         for (String[] row : board) {
-            for (String cell : row) {
-                System.out.print("|  " + ConsoleColors.RESET + cell + HumanAndBot.currentIconColor + ConsoleColors.RESET + "  ");
+            for (String cell : row) { //HumanAndBot.currentIconColor
+                System.out.print("|  " + ConsoleColors.RESET + cell +  ConsoleColors.RESET + "  ");
             }
             System.out.print(ConsoleColors.RESET);
             System.out.println("|");

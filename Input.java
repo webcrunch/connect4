@@ -57,7 +57,7 @@ public class Input {
             try {
                 answer = choices[Integer.parseInt(in.nextLine()) - 1].trim();
             } catch (Exception ignore) {
-                // i don't care which error i get
+                // no error handling..
             }
         }
         while(answer.equals(""));
