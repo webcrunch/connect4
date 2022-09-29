@@ -22,18 +22,17 @@ public class Players {
         if(whatBot == 1) {
             HumanAndBot.currentPlayer = HumanAndBot.Player1 = bot + "_1";
             HumanAndBot.isPlayer1Bot = true;
-            HumanAndBot.currentIcon = HumanAndBot.iconPlayer1 = "X";
+            HumanAndBot.currentIcon = HumanAndBot.iconPlayer1 = "O";
             if(bot.equals("Advanced bot")) HumanAndBot.isBot1Advanced = true;
         }else{
             HumanAndBot.Player2 = bot + "_2";
             HumanAndBot.isPlayer2Bot = true;
-            HumanAndBot.iconPlayer2 = "O";
+            HumanAndBot.iconPlayer2 = "X";
             if(bot.equals("Advanced bot")) HumanAndBot.isBot2Advanced = true;
         }
     }
 
     public static void setPlayer(int whatPlayer){
-        System.out.println(whatPlayer);
         if(whatPlayer == 1) {
             //todo add colors to choose from and icons;
             HumanAndBot.currentPlayer = HumanAndBot.Player1 = Input.string("Whats your name player1?");

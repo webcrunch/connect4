@@ -26,12 +26,14 @@ public class EndingHandling {
         }
     }
     private static void endOfGameHandling(){
+        Board.drawBoard();
         Input.print("congratulation!! " + HumanAndBot.currentPlayer + " you won this time, Revenge for " + (HumanAndBot.currentPlayer.equals(HumanAndBot.Player1) ? HumanAndBot.Player2 : HumanAndBot.Player1) +  "!!! :)" );
 
         doYouWantToPlayANewGame();
     }
 
     private static void tieOfGameHandling(){
+        Board.drawBoard();
         Input.print("the game was tie, better luck to both next time");
         doYouWantToPlayANewGame();
     }

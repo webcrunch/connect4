@@ -1,9 +1,8 @@
 public class BotPlaying {
 
     public static void botPlaying() {
-        // need to remove the _number to handle what kind of bot we are working with
         String[] player = HumanAndBot.currentPlayer.split("_");
-        // todo working on an advanced bot;
+
         if (player[0].equals("Crazy bot")) {
             System.out.print("." + ConsoleColors.BLUE_UNDERLINED.repeat(5));
             System.out.print("..Thinking.." + ConsoleColors.BLUE_UNDERLINED);
@@ -29,7 +28,7 @@ public class BotPlaying {
                 Board.dropToBoardPlayer(3);
             } else {
                 totalPieceOnTheBoard();
-                //Board.dropToBoardPlayer(totalPieceOnTheBoard());
+                Board.dropToBoardPlayer(totalPieceOnTheBoard());
             }
 
             Input.sleep(2000);
@@ -40,8 +39,7 @@ public class BotPlaying {
         String own = HumanAndBot.currentIcon;
         String opp = HumanAndBot.currentPlayer.equals(HumanAndBot.Player1) ? HumanAndBot.iconPlayer2 : HumanAndBot.iconPlayer1;
         System.out.println(own + "<-- own opp --> " + opp);
-        int result = MoveChecker.handleMovesFromBot(opp, own);
-        return Input.randomizer(0, 6);// checkForNextMove();
+        return MoveChecker.handleMovesFromBot(opp, own);
     }
 
     private static int totalPieceOnTheBoard() {

@@ -22,45 +22,45 @@ public class CheckResult {
     public static boolean isAWin(){
         String p = HumanAndBot.currentIcon;
         // Check for connecting four horizon.  -------
-         for (int rad = 0; rad < Board.board.length; rad++) {
-            for (int kol = 0; kol < Board.board[0].length - 3; kol++) {
-                if (Board.board[rad][kol].equals(p) &&
-                        Board.board[rad][kol + 1].equals(p) &&
-                        Board.board[rad][kol + 2].equals(p) &&
-                        Board.board[rad][kol + 3].equals(p)){
+         for (int row = 0; row < Board.board.length; row++) {
+            for (int column = 0; column < Board.board[0].length - 3; column++) {
+                if (Board.board[row][column].equals(p) &&
+                        Board.board[row][column + 1].equals(p) &&
+                        Board.board[row][column + 2].equals(p) &&
+                        Board.board[row][column + 3].equals(p)){
                     return true;
                 }
             }
         }
         // Check for connecting four vertical. |
-        for (int rad = 0; rad < Board.board.length - 3; rad++) {
-            for (int kol = 0; kol < Board.board[0].length; kol++) {
-                if (Board.board[rad][kol].equals(p)  &&
-                        Board.board[rad + 1][kol].equals(p)  &&
-                        Board.board[rad + 2][kol].equals(p)  &&
-                        Board.board[rad + 3][kol].equals(p)) {
+        for (int row = 0; row < Board.board.length - 3; row++) {
+            for (int column = 0; column < Board.board[0].length; column++) {
+                if (Board.board[row][column].equals(p)  &&
+                        Board.board[row + 1][column].equals(p)  &&
+                        Board.board[row + 2][column].equals(p)  &&
+                        Board.board[row + 3][column].equals(p)) {
                     return true;
                 }
             }
         }
         // Check for connecting four diagonal from right to left.
-        for (int rad = 3; rad < Board.board.length; rad++) {
-            for (int kol = 0; kol < Board.board[0].length - 3; kol++) {
-                if (Board.board[rad][kol].equals(p)  &&
-                        Board.board[rad - 1][kol + 1].equals(p)  &&
-                        Board.board[rad - 2][kol + 2].equals(p)  &&
-                        Board.board[rad - 3][kol + 3].equals(p)) {
+        for (int row = 3; row < Board.board.length; row++) {
+            for (int column = 0; column < Board.board[0].length - 3; column++) {
+                if (Board.board[row][column].equals(p)  &&
+                        Board.board[row - 1][column + 1].equals(p)  &&
+                        Board.board[row - 2][column + 2].equals(p)  &&
+                        Board.board[row - 3][column + 3].equals(p)) {
                     return true;
                 }
             }
         }
         // Check for connecting four diagonal from left to right.
-        for (int rad = 0; rad < Board.board.length - 3; rad++) {
-            for (int kol = 0; kol < Board.board[0].length - 3; kol++) {
-                if (Board.board[rad][kol].equals(p)  &&
-                        Board.board[rad + 1][kol + 1].equals(p)  &&
-                        Board.board[rad + 2][kol + 2].equals(p)  &&
-                        Board.board[rad + 3][kol + 3].equals(p)) {
+        for (int row = 0; row < Board.board.length - 3; row++) {
+            for (int column = 0; column < Board.board[0].length - 3; column++) {
+                if (Board.board[row][column].equals(p)  &&
+                        Board.board[row + 1][column + 1].equals(p)  &&
+                        Board.board[row + 2][column + 2].equals(p)  &&
+                        Board.board[row + 3][column + 3].equals(p)) {
                     return true;
                 }
             }

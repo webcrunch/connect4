@@ -12,116 +12,170 @@ public class MoveChecker {
         int opportunityLeft = -1;
         int opportunityRight = -1;
         int layTwo = -1;
-        int layTwoVert = -1;
+        int layTwoLeft = -1;
+        int layTwoRight = -1;
 
         // vertical check opponent
-         for (int vertical = 0; vertical < 6; vertical++) {
+        for (int vertical = 0; vertical < 6; vertical++) {
             for (int row = 0; row < 3; row++) {
                 if (Board.board[vertical][row].equals(opp) && Board.board[vertical][row + 1].equals(opp) && Board.board[vertical][row + 2].equals(opp)
-                ){
-                    System.out.println("will this be better now ? It is not so fun any more, vertical");
-                }
+                ) {
+                    // check if the left or right side is beyond the side of the board or they are already set with own piece.
 
+                    if(Board.board[vertical][row -1].equals(" ")) dangerLeft = row -1;
+                    if( row +3 < 7 && Board.board[vertical][row +3].equals(" "))dangerRight = row +3;
+
+                }
             }
         }
 
         // horizontal check opponent
-        for(int row = 0; row < 4; row++){
-            for (int column = 0;column < 6;column++){
-                if(
-                        Board.board[row][column].equals(opp) &&
-                        Board.board[row +1][column].equals(opp) &&
-                        Board.board[row +2][column].equals(opp)
-                ){
-                    danger = row -1;
-                    System.out.println("will this be better now ? It is not so fun any more doe the horizontal");
-                }
-
-            }
-        }
-
-        // diagonal (right to left) check opponent
-        for (int rad = 3; rad < Board.board.length; rad++) {
-            for (int kol = 0; kol < Board.board[0].length - 3; kol++) {
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 6; column++) {
                 if (
-                        Board.board[rad][kol].equals(opp)  &&
-                        Board.board[rad - 1][kol + 1].equals(opp)  &&
-                        Board.board[rad - 2][kol + 2].equals(opp)
+                        Board.board[row][column].equals(opp) &&
+                        Board.board[row + 1][column].equals(opp) &&
+                        Board.board[row + 2][column].equals(opp)
                 ) {
-                    System.out.println("will this be better now ? It is not so fun any more doe the diagonal");
+                    // check if the row over the pattern is already set with a own brick then we don´t need to handle that one
+                    if (row -1 >= 0 && Board.board[row - 1][column].equals(" ")) danger = row - 1;
                 }
             }
         }
 
         // diagonal (left to right) check opponent
-        for (int rad = 0; rad < Board.board.length - 3; rad++) {
-            for (int kol = 0; kol < Board.board[0].length - 3; kol++) {
+        for (int column = 0; column < 3; column++) {
+            for (int row = 0; row < 7; row++) {
                 if (
-                        Board.board[rad][kol].equals(opp)  &&
-                        Board.board[rad + 1][kol + 1].equals(opp)  &&
-                        Board.board[rad + 2][kol + 2].equals(opp)
-                        ) {
-                    System.out.println("will this be better now ? It is not so fun any more doe the diagonal2");
+                        Board.board[column][row].equals(opp) &&
+                        Board.board[column + 1][row + 1].equals(opp) &&
+                        Board.board[column + 2][row + 2].equals(opp)
+                ) {
+                    if(row -1 >= 0 && column -1 >= 0 && Board.board[column-1][row-1].equals(" ")) dangerLeft = row -1;
+                    if(row +3 <= 6 && column +3 <= 5 && Board.board[column+3][row+3].equals(" ")) dangerRight = row +3;
                 }
             }
         }
 
-        // vertical check your self
+
+        // Check for connecting four diagonal from right to left. Need to rewrite this so it takes all three pattern also
+        for (int row = 3; row < 6; row++) {
+            for (int column = 0; column < 3; column++) {
+                if (
+                        Board.board[row][column].equals(opp)  &&
+                        Board.board[row - 1][column + 1].equals(opp)  &&
+                        Board.board[row - 2][column + 2].equals(opp)
+                ) {
+
+                   //if(row +1 <= 6 && column -1 <= 5 && Board.board[row+1][column-1].equals(" ")) dangerLeft = row +1;
+                   //if(row -3 <= 6 && column +3 <= 5 && Board.board[row-3][column+3].equals(" ")) dangerRight = row -3;
+                }
+            }
+        }
+
+
+        // vertical check for self three pattern
         for (int vertical = 0; vertical < 6; vertical++) {
             for (int row = 0; row < 3; row++) {
                 if (Board.board[vertical][row].equals(own) && Board.board[vertical][row + 1].equals(own) && Board.board[vertical][row + 2].equals(own)
-                ){
-                    System.out.println("will this be better now ? It is not so fun any more for your self, vertical");
-                }
+                ) {
+                    // check if the left or right side is beyond the side of the board or they are already set with own piece.
 
+                    if(Board.board[vertical][row -1].equals(" ")) opportunityLeft = row -1;
+                    if( row +3 < 7 && Board.board[vertical][row +3].equals(" ")) opportunityRight = row +3;
+
+                }
             }
         }
 
-        // horizontal check your self
-        for(int row = 0; row < 4; row++){
-            for (int column = 0;column < 6;column++){
-                if(
+        // horizontal check for self three pattern
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 6; column++) {
+                if (
                         Board.board[row][column].equals(own) &&
-                                Board.board[row +1][column].equals(own) &&
-                                Board.board[row +2][column].equals(own)
-                ){
-                    opportunity = row -1;
-                    System.out.println("will this be better now ? It is not so fun any more doe the horizontal");
-                }
-
-            }
-        }
-
-        // diagonal (right to left) check your self
-        for (int rad = 3; rad < Board.board.length; rad++) {
-            for (int kol = 0; kol < Board.board[0].length - 3; kol++) {
-                if (
-                        Board.board[rad][kol].equals(own)  &&
-                                Board.board[rad - 1][kol + 1].equals(own)  &&
-                                Board.board[rad - 2][kol + 2].equals(own)
+                                Board.board[row + 1][column].equals(own) &&
+                                Board.board[row + 2][column].equals(own)
                 ) {
-                    System.out.println("will this be better now ? It is not so fun any more doe the diagonal");
+                    // check if the row over the pattern is already set with a own brick then we don´t need to handle that one
+                    if (row -1 >= 0 && Board.board[row - 1][column].equals(" ")) opportunity = row - 1;
                 }
             }
         }
 
-        // diagonal (left to right) check your self
-        for (int rad = 0; rad < Board.board.length - 3; rad++) {
-            for (int kol = 0; kol < Board.board[0].length - 3; kol++) {
+        // diagonal (left to right) check for self
+        for (int column = 0; column < 3; column++) {
+            for (int row = 0; row < 7; row++) {
                 if (
-                        Board.board[rad][kol].equals(own)  &&
-                                Board.board[rad + 1][kol + 1].equals(own)  &&
-                                Board.board[rad + 2][kol + 2].equals(own)
+                        Board.board[column][row].equals(own) &&
+                                Board.board[column + 1][row + 1].equals(own) &&
+                                Board.board[column + 2][row + 2].equals(own)
                 ) {
-                    System.out.println("will this be better now ? It is not so fun any more doe the diagonal2");
+                    if(row -1 >= 0 && column -1 >= 0 && Board.board[column-1][row-1].equals(" ")) opportunityLeft = row -1;
+                    if(row +3 <= 6 && column +3 <= 5 && Board.board[column+3][row+3].equals(" ")) opportunityRight = row +3;
                 }
             }
         }
 
-        System.out.println(danger + " " + opportunity);
+        // Check for connecting four diagonal from right to left for self.
+        for (int row = 3; row < Board.board.length; row++) {
+            for (int column = 0; column < Board.board[0].length - 3; column++) {
+                if (
+                        Board.board[row][column].equals(own)  &&
+                        Board.board[row - 1][column + 1].equals(own)  &&
+                        Board.board[row - 2][column + 2].equals(own)
+                ) {
+
+                   if(row +1 <= 6 && column -1 <= 5 && Board.board[column-1][row+1].equals(" ")) opportunityRight = row +1;
+                   if(row -3 <= 6 && column +3 <= 5 && Board.board[column+3][row-3].equals(" ")) opportunityLeft = row -3;
+                }
+            }
+        }
+
+
+        // vertical check for self two pattern
+        for (int vertical = 0; vertical < 6; vertical++) {
+            for (int row = 0; row < 3; row++) {
+                if (
+                        Board.board[vertical][row].equals(own) &&
+                        Board.board[vertical][row + 1].equals(own)
+                ) {
+                    // check if the left or right side is beyond the side of the board or they are already set with own piece.
+
+                    if(Board.board[vertical][row -1].equals(" ")) layTwoLeft = row -1;
+                    // check index is out of bounds
+                    if( row +2 < 7 && Board.board[vertical][row +2].equals(" ")) layTwoRight = row +2;
+                }
+            }
+        }
+
+        // horizontal check for self two pattern
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 6; column++) {
+                if (
+                        Board.board[row][column].equals(own) &&
+                                Board.board[row + 1][column].equals(own)
+                ) {
+                    // check if the row over the pattern is already set with a own brick then we don´t need to handle that one
+                    if (row -1 >= 0 && Board.board[row - 1][column].equals(" ")) layTwo = row - 1;
+                }
+            }
+        }
+
+        // prioritize danger first top then right/left (randomize 0,1 (0 left 1 right))
+        // then opportunity same approach
+        // last lay and also same approach.
+
+        // first check the danger.
+        int leftRight = Input.randomizer(0,1);
+
+
+    Integer checkOpponentWinMove = danger != -1 ? danger: dangerLeft != -1 && dangerRight != -1 ? leftRight == 1? dangerRight : dangerLeft : dangerLeft != -1 ? dangerLeft : dangerRight != -1 ? dangerRight : -1;
+        Integer checkOwnWinMove = opportunity != -1 ? opportunity: opportunityLeft != -1 && opportunityRight != -1 ? leftRight == 1 ? opportunityRight : opportunityLeft : opportunityLeft != -1 ? opportunityLeft : opportunityRight != -1 ? opportunityRight : -1;
+        Integer checkOwnMove = layTwo != -1 ? layTwo: layTwoLeft != -1 && layTwoRight != -1 ? leftRight == 1 ? layTwoRight : layTwoLeft : layTwoLeft != -1 ? layTwoLeft : layTwoRight != -1 ? layTwoRight : -1;
 
         Input.sleep(400);
-        return 0;
+        //todo have diagonal checks left - bug in the system.
+        return checkOpponentWinMove != -1 ? checkOpponentWinMove : checkOwnWinMove != -1 ? checkOwnWinMove : checkOwnMove != -1 ? checkOwnMove : Input.randomizer(0,6);
     }
 
     public static int handleMovesFromBot(String opp, String own) {
