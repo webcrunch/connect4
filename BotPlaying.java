@@ -27,7 +27,6 @@ public class BotPlaying {
             if (emptyBoardCheck()) {
                 Board.dropToBoardPlayer(3);
             } else {
-                totalPieceOnTheBoard();
                 Board.dropToBoardPlayer(totalPieceOnTheBoard());
             }
 
@@ -36,10 +35,7 @@ public class BotPlaying {
     }
 
     public static int checkForNextMove() {
-        String own = HumanAndBot.currentIcon;
-        String opp = HumanAndBot.currentPlayer.equals(HumanAndBot.Player1) ? HumanAndBot.iconPlayer2 : HumanAndBot.iconPlayer1;
-        System.out.println(own + "<-- own opp --> " + opp);
-        return MoveChecker.handleMovesFromBot(opp, own);
+        return MoveChecker.handleMovesFromBot(HumanAndBot.currentPlayer.equals(HumanAndBot.Player1) ? HumanAndBot.iconPlayer2 : HumanAndBot.iconPlayer1, HumanAndBot.currentIcon);
     }
 
     private static int totalPieceOnTheBoard() {
