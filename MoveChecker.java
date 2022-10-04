@@ -127,28 +127,16 @@ public class MoveChecker {
             }
         }
 
-        // prioritize danger first top then right/left (randomize 0,1 (0 left 1 right))
-        // then opportunity same approach
-        // last lay and also same approach.
-
-        // first check the danger.
-        int leftRight = Input.randomizer(0,1);
-
-    Integer checkOpponentWinMove = danger != -1 ? danger: dangerLeft != -1 && dangerRight != -1 ? leftRight == 1? dangerRight : dangerLeft : dangerLeft != -1 ? dangerLeft : dangerRight != -1 ? dangerRight : -1;
-        Integer checkOwnWinMove = opportunity != -1 ? opportunity: opportunityLeft != -1 && opportunityRight != -1 ? leftRight == 1 ? opportunityRight : opportunityLeft : opportunityLeft != -1 ? opportunityLeft : opportunityRight != -1 ? opportunityRight : -1;
-        Integer checkOwnMove = layTwo != -1 ? layTwo: layTwoLeft != -1 && layTwoRight != -1 ? leftRight == 1 ? layTwoRight : layTwoLeft : layTwoLeft != -1 ? layTwoLeft : layTwoRight != -1 ? layTwoRight : -1;
-
         Input.sleep(400);
 
         //todo have diagonal checks left - bug in the system. and the other checks also
-        //return checkOpponentWinMove != -1 ? checkOpponentWinMove : checkOwnWinMove != -1 ? checkOwnWinMove : checkOwnMove != -1 ? checkOwnMove : Input.randomizer(0,6);
-        return checkOpponentWinMove != -1 ? checkOpponentWinMove : checkOwnWinMove != -1 ? checkOwnWinMove : checkOwnMove != -1 ? checkOwnMove : Input.randomizer(0,6);
+
 */
         int oppMove = OpponentPatterCheck.returnAMove(opp);
         int ownMove = OpportunityPatternCheck.returnAMove(own);
         int layTwoMove = TwoPatternCheck.returnAMove(own);
 
-        return oppMove != -1 ? oppMove : ownMove != -1 ? ownMove : layTwoMove != -1 ? layTwoMove:     Input.randomizer(0,6);
+        return oppMove != -1 ? oppMove : ownMove != -1 ? ownMove : layTwoMove != -1 ? layTwoMove: Input.randomizer(0,6);
     }
 
     public static int handleMovesFromBot(String opp, String own) {

@@ -52,6 +52,6 @@ public class TwoPatternCheck {
         System.out.println(layTwoLeft + " <- lay Left ");
         System.out.println(layTwoRight + " <- lay Right ");
 
-        return  layTwo != -1 ? layTwo : layTwoLeft != -1 && layTwoRight != -1 ? Input.randomizer(0,1) == 1 ? layTwoRight : layTwoLeft : layTwoLeft != -1 ? layTwoLeft : layTwoRight != -1 ? layTwoRight : Input.randomizer(0,6);
+        return  layTwo != -1 ? layTwo : layTwoLeft != -1 && layTwoRight != -1 ? Input.randomizer(0,1) == 1 ? layTwoRight : layTwoLeft : layTwoLeft != -1 ? layTwoLeft : layTwoRight != -1 ? layTwoRight : -1;
     }
 }

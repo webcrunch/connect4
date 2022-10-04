@@ -54,7 +54,7 @@ public class OpportunityPatternCheck {
         System.out.println(opportunityLeft + " <- opportunity Left ");
         System.out.println(opportunityRight + " <- opportunity Right ");
 
-        return opportunity != -1 ? opportunity : opportunityLeft != -1 && opportunityRight != -1 ? Input.randomizer(0,1) == 1 ? opportunityRight : opportunityLeft: opportunityLeft != -1 ? opportunityLeft : opportunityRight != -1 ? opportunityRight : Input.randomizer(0,6);
+        return opportunity != -1 ? opportunity : opportunityLeft != -1 && opportunityRight != -1 ? Input.randomizer(0,1) == 1 ? opportunityRight : opportunityLeft: opportunityLeft != -1 ? opportunityLeft : opportunityRight != -1 ? opportunityRight : -1;
     }
 
 }

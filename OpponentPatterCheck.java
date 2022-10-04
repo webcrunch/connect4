@@ -53,6 +53,6 @@ public class OpponentPatterCheck {
         leftToRight(opp);
         System.out.println(dangerLeft + " <- danger Left ");
         System.out.println(dangerRight + " <- danger Right ");
-        return danger != -1 ? danger : dangerLeft != -1 && dangerRight != -1 ? Input.randomizer(0,1) == 1 ? dangerLeft : dangerRight : dangerLeft != -1 ? dangerRight : dangerLeft != -1 ? dangerRight : Input.randomizer(0,6) ;
+        return danger != -1 ? danger : dangerLeft != -1 && dangerRight != -1 ? Input.randomizer(0,1) == 1 ? dangerLeft : dangerRight : dangerLeft != -1 ? dangerRight : dangerLeft != -1 ? dangerRight : -1 ;
     }
 }
