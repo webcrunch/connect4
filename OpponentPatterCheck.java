@@ -13,8 +13,8 @@ public class OpponentPatterCheck {
                 ) {
                     // check if the left or right side is beyond the side of the board. In that case they are already set with own piece.
 
-                    if( row -1 >= 0 && Board.board[vertical][row -1].equals(" ")) dangerLeft = row -1;
-                    if( (row +3 < 7) && Board.board[vertical][row +3].equals(" "))dangerRight = row +3;
+                    if (row - 1 >= 0 && Board.board[vertical][row - 1].equals(" ")) dangerLeft = row - 1;
+                    if ((row + 3 < 7) && Board.board[vertical][row + 3].equals(" ")) dangerRight = row + 3;
 
                 }
             }
@@ -25,7 +25,6 @@ public class OpponentPatterCheck {
         // horizontal check opponent
         for (int row = 0; row < 7; row++) {
             for (int column = 0; column < 4; column++) {
-
                 if (
                         Board.board[column][row].equals(opp) &&
                                 Board.board[column + 1][row].equals(opp) &&
@@ -33,7 +32,7 @@ public class OpponentPatterCheck {
                 ) {
                     // check if the row over the pattern is already set with its own brick then we don´t need to handle that one
 
-                    if (column -1 >= 0 && Board.board[row - 1][column].equals(" ")) danger = row - 1;
+                    if (column - 1 >= 0 && Board.board[row - 1][column].equals(" ")) danger = row;
                 }
             }
         }
@@ -52,9 +51,9 @@ public class OpponentPatterCheck {
         vertical(opp);
         rightToLeft(opp);
         leftToRight(opp);
-        System.out.println(danger);
+
         System.out.println(dangerLeft);
         System.out.println(dangerRight);
-        return -1;
+        return danger != -1 ? danger : -1;
     }
 }

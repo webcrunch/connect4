@@ -25,6 +25,7 @@ public class Main {
     public static void startTheGame(){
         while (true) {
             displayBoard();
+            System.out.println("one or two");
             int checkPlay = playYourTurn();
             if(checkPlay == 1)EndingHandling.handleEndings("End");
             if(checkPlay == 2)EndingHandling.handleEndings("Tie");

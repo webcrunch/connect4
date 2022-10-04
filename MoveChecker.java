@@ -192,10 +192,10 @@ public class MoveChecker {
         return checkOpponentWinMove != -1 ? checkOpponentWinMove : checkOwnWinMove != -1 ? checkOwnWinMove : checkOwnMove != -1 ? checkOwnMove : Input.randomizer(0,6);
 */
         int oppMove = OpponentPatterCheck.returnAMove(opp);
-        int ownMove = OpportunityPatternCheck.returnAMove();
-        int layTwoMove = TwoPatternCheck.returnAMove();
-        
-        return oppMove != -1 ? oppMove : Input.randomizer(0,6);
+        int ownMove = OpportunityPatternCheck.returnAMove(own);
+        int layTwoMove = TwoPatternCheck.returnAMove(own);
+
+        return oppMove != -1 ? oppMove : ownMove != -1 ? ownMove : layTwoMove != -1 ? layTwoMove:     Input.randomizer(0,6);
     }
 
     public static int handleMovesFromBot(String opp, String own) {

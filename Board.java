@@ -15,10 +15,10 @@ public class Board {
                             " ", " ", " ", " ", " ", " ", " "
                     },
                     {
-                            " ", " ", " ", " ", " ", " ", " "
+                            " ", " ", "O", " ", " ", " ", " "
                     },
                     {
-                            " ", " ", " ", " ", " ", " ", " "
+                            " ", " ", "O", " ", " ", " ", " "
                     }
             };
 
@@ -72,7 +72,7 @@ public class Board {
     public static void dropToBoardPlayer(int width) {
         // check the bottom of the board and then go upwards
         // start with [floor][width]
-        System.out.println(HumanAndBot.currentIconColor);
+        //System.out.println(HumanAndBot.currentIconColor);
         String inputToBoard = HumanAndBot.currentIcon;
         //HumanAndBot.currentIconColor +
         for (int floor = 5; floor >= 0; floor--) {
