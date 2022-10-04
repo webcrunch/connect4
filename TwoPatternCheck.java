@@ -4,9 +4,21 @@ public class TwoPatternCheck {
     private static int layTwoLeft = -1;
     private static int layTwoRight = -1;
 
-    private static void vertical() {
-
+    private static void vertical(String own) {
+        // vertical check opponent
+        for (int column = 0; column < 6; column++) {
+            for (int row = 0; row < 6; row++) {
+                if (
+                        Board.board[column][row].equals(own) &&
+                        Board.board[column][row+1].equals(own)
+                ) {
+                    if (row - 1 >= 0 && Board.board[column][row - 1].equals(" ")) layTwoLeft = row - 1;
+                    if ((row + 2 < 7) && Board.board[column][row + 2].equals(" ")) layTwoRight = row + 2;
+                }
+            }
+        }
     }
+
 
     private static void horizontal(String own) {
         // horizontal check opponent
@@ -33,10 +45,13 @@ public class TwoPatternCheck {
 
     public static int returnAMove(String own) {
         horizontal(own);
-        vertical();
+        vertical(own);
         rightToLeft();
         leftToRight();
-        System.out.println("good to lay on that place: " + layTwo);
-        return  layTwo != -1 ? layTwo : -1;
+
+        System.out.println(layTwoLeft + " <- lay Left ");
+        System.out.println(layTwoRight + " <- lay Right ");
+
+        return  layTwo != -1 ? layTwo : layTwoLeft != -1 && layTwoRight != -1 ? Input.randomizer(0,1) == 1 ? layTwoRight : layTwoLeft : layTwoLeft != -1 ? layTwoLeft : layTwoRight != -1 ? layTwoRight : Input.randomizer(0,6);
     }
 }

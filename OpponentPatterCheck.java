@@ -6,18 +6,18 @@ public class OpponentPatterCheck {
 
     private static void vertical(String opp) {
         // vertical check opponent
-
-        for (int vertical = 0; vertical < 6; vertical++) {
-            for (int row = 0; row < 3; row++) {
-                if (Board.board[vertical][row].equals(opp) && Board.board[vertical][row + 1].equals(opp) && Board.board[vertical][row + 2].equals(opp)
+            for (int column = 0; column < 6; column++) {
+                for (int row = 0; row < 5; row++) {
+                  if (
+                        Board.board[column][row].equals(opp) &&
+                        Board.board[column][row+1].equals(opp) &&
+                        Board.board[column][row+2].equals(opp)
                 ) {
-                    // check if the left or right side is beyond the side of the board. In that case they are already set with own piece.
-
-                    if (row - 1 >= 0 && Board.board[vertical][row - 1].equals(" ")) dangerLeft = row - 1;
-                    if ((row + 3 < 7) && Board.board[vertical][row + 3].equals(" ")) dangerRight = row + 3;
-
+                    if (row - 1 >= 0 && Board.board[column][row - 1].equals(" ")) dangerLeft = row - 1;
+                    if ((row + 3 < 7) && Board.board[column][row + 3].equals(" ")) dangerRight = row + 3;
                 }
-            }
+
+           }
         }
     }
 
@@ -51,9 +51,8 @@ public class OpponentPatterCheck {
         vertical(opp);
         rightToLeft(opp);
         leftToRight(opp);
-
-        System.out.println(dangerLeft);
-        System.out.println(dangerRight);
-        return danger != -1 ? danger : -1;
+        System.out.println(dangerLeft + " <- danger Left ");
+        System.out.println(dangerRight + " <- danger Right ");
+        return danger != -1 ? danger : dangerLeft != -1 && dangerRight != -1 ? Input.randomizer(0,1) == 1 ? dangerLeft : dangerRight : dangerLeft != -1 ? dangerRight : dangerLeft != -1 ? dangerRight : Input.randomizer(0,6) ;
     }
 }

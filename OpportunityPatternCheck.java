@@ -4,8 +4,20 @@ public class OpportunityPatternCheck {
     private static int opportunityLeft = -1;
     private static int opportunityRight = -1;
 
-    private static void vertical() {
-
+    private static void vertical(String own) {
+        // vertical check opponent
+        for (int column = 0; column < 6; column++) {
+            for (int row = 0; row < 5; row++) {
+                if (
+                        Board.board[column][row].equals(own) &&
+                                Board.board[column][row+1].equals(own) &&
+                                Board.board[column][row+2].equals(own)
+                ) {
+                    if (row - 1 >= 0 && Board.board[column][row - 1].equals(" ")) opportunityLeft = row - 1;
+                    if ((row + 3 < 7) && Board.board[column][row + 3].equals(" ")) opportunityRight = row + 3;
+                }
+            }
+        }
     }
 
     private static void horizontal(String own) {
@@ -35,11 +47,14 @@ public class OpportunityPatternCheck {
 
     public static int returnAMove(String own) {
         horizontal(own);
-        vertical();
+        vertical(own);
         rightToLeft();
         leftToRight();
 
-        return opportunity != -1 ? opportunity : -1;
+        System.out.println(opportunityLeft + " <- opportunity Left ");
+        System.out.println(opportunityRight + " <- opportunity Right ");
+
+        return opportunity != -1 ? opportunity : opportunityLeft != -1 && opportunityRight != -1 ? Input.randomizer(0,1) == 1 ? opportunityRight : opportunityLeft: opportunityLeft != -1 ? opportunityLeft : opportunityRight != -1 ? opportunityRight : Input.randomizer(0,6);
     }
 
 }

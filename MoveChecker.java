@@ -6,54 +6,7 @@ public class MoveChecker {
     private static int whatMoveToMake(String opp, String own) {
         // Start with checking the opponents bricks vertical first and then horizontal and last the diagonal ways. We are only interested if the opponent has more that two in a row. If the pattern is four then it is Game Over, and we are not able to be here.
 /*
-        int danger = -1;
-        int dangerLeft = -1;
-        int dangerRight = -1;
-        int opportunity = -1;
-        int opportunityLeft = -1;
-        int opportunityRight = -1;
-        int layTwo = -1;
-        int layTwoLeft = -1;
-        int layTwoRight = -1;
 
-
-        for (int column = 0; column < 6;column++){
-        for (int row = 0; row < 4; row++){
-            System.out.println(column + " " + row);
-        }
-        }
-/*
-        // vertical check opponent
-
-        for (int vertical = 0; vertical < 6; vertical++) {
-            for (int row = 0; row < 3; row++) {
-                if (Board.board[vertical][row].equals(opp) && Board.board[vertical][row + 1].equals(opp) && Board.board[vertical][row + 2].equals(opp)
-                ) {
-                    // check if the left or right side is beyond the side of the board or they are already set with own piece.
-
-                    if( row -1 >= 0 && Board.board[vertical][row -1].equals(" ")) dangerLeft = row -1;
-                    if( row +3 < 7 && Board.board[vertical][row +3].equals(" "))dangerRight = row +3;
-
-                }
-            }
-        }
-
-        // horizontal check opponent
-        for (int row = 0; row < 7; row++) {
-            for (int column = 0; column < 4; column++) {
-
-                if (
-                        Board.board[column][row].equals(opp) &&
-                        Board.board[column + 1][row].equals(opp) &&
-                        Board.board[column + 2][row].equals(opp)
-                ) {
-                    // check if the row over the pattern is already set with a own brick then we don´t need to handle that one
-
-                    if (column -1 >= 0 && Board.board[row - 1][column].equals(" ")) danger = row - 1;
-                }
-            }
-        }
-/*
         // diagonal (left to right) check opponent
         for (int column = 0; column < 3; column++) {
             for (int row = 0; row < 7; row++) {
