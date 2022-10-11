@@ -56,5 +56,4 @@ public class OpportunityPatternCheck {
 
         return opportunity != -1 ? opportunity : opportunityLeft != -1 && opportunityRight != -1 ? Input.randomizer(0,1) == 1 ? opportunityRight : opportunityLeft: opportunityLeft != -1 ? opportunityLeft : opportunityRight != -1 ? opportunityRight : -1;
     }
-
 }

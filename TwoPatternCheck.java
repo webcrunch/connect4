@@ -19,7 +19,6 @@ public class TwoPatternCheck {
         }
     }
 
-
     private static void horizontal(String own) {
         // horizontal check opponent
         for (int row = 0; row < 7; row++) {
