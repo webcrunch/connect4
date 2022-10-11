@@ -2,7 +2,7 @@ public class CheckResult {
 
     public static boolean tieTheBoard() {
         // check if we have a win, then it is not a tie
-         if(isAWin()){
+         if(getIsAWin()){
             return false;
         }
         // otherwise check if the board is full, then it is a tie
@@ -17,10 +17,15 @@ public class CheckResult {
         // didn't return before, so it is a tie
         return true;
     }
+    public static boolean getIsAWin(){
+        return isAWin(HumanAndBot.currentIcon);
+    }
+    public static boolean getIsAWinTempBrick(String pattern){
+        return isAWin(pattern);
+    }
 
+    private static boolean isAWin(String p){
 
-    public static boolean isAWin(){
-        String p = HumanAndBot.currentIcon;
         // Check for connecting four horizon.  -------
          for (int row = 0; row < Board.board.length; row++) {
             for (int column = 0; column < Board.board[0].length - 3; column++) {

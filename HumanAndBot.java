@@ -1,7 +1,7 @@
 public class HumanAndBot {
 
     public static String Player1, iconPlayer1, iconColor1 = ConsoleColors.BLUE;
-
+public static int  lastDrawFloor,lastDrawWidth;
     public static String Player2, iconPlayer2, iconColor2 =  ConsoleColors.GREEN_BOLD;
     public static String currentPlayer, currentIcon, currentIconColor = iconColor1;
     // set is in the beginning of the boolean variable name;

@@ -25,7 +25,6 @@ public class Main {
     public static void startTheGame(){
         while (true) {
             displayBoard();
-            System.out.println("one or two");
             int checkPlay = playYourTurn();
             if(checkPlay == 1)EndingHandling.handleEndings("End");
             if(checkPlay == 2)EndingHandling.handleEndings("Tie");
@@ -38,7 +37,7 @@ public class Main {
         else BotPlaying.botPlaying();
         boolean tie = CheckResult.tieTheBoard();
         if(tie) return 2;
-        boolean won = CheckResult.isAWin();
+        boolean won = CheckResult.getIsAWin();
         if(won) return 1;
         Players.changeCurrentPlayer();
         Input.sleep(2000);

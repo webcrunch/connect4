@@ -18,7 +18,7 @@ public class Board {
                             " ", " ", " ", " ", " ", " ", " "
                     },
                     {
-                            " ", " ", " ", " ", "O", "O", " "
+                            " ", " ", " ", " ", " ", " ", " "
                     }
             };
 
@@ -69,16 +69,30 @@ public class Board {
         }
     }
 
-    public static void dropToBoardPlayer(int width) {
-        // check the bottom of the board and then go upwards
-        // start with [floor][width]
-        //System.out.println(HumanAndBot.currentIconColor);
+    public static void removeTempLay(){
+        board[HumanAndBot.lastDrawFloor][HumanAndBot.lastDrawWidth] = " ";
+    }
+
+    public static void dropTempBrickToBoard(int width, String pattern) {
         String inputToBoard = HumanAndBot.currentIcon;
         //HumanAndBot.currentIconColor +
         for (int floor = 5; floor >= 0; floor--) {
             if (occupiedOrNot(floor, width)) {
-                //HumanAndBot.lastDraw.add(floor);
-                //HumanAndBot.lastDraw.add(width);
+                HumanAndBot.lastDrawFloor = floor;
+                HumanAndBot.lastDrawWidth = width;
+                board[floor][width] = pattern;
+                break;
+            }
+        }
+    }
+
+    public static void dropToBoardPlayer(int width) {
+        String inputToBoard = HumanAndBot.currentIcon;
+        //HumanAndBot.currentIconColor +
+        for (int floor = 5; floor >= 0; floor--) {
+            if (occupiedOrNot(floor, width)) {
+                HumanAndBot.lastDrawFloor = floor;
+                HumanAndBot.lastDrawWidth = width;
                 board[floor][width] = inputToBoard;
                 break;
             }
