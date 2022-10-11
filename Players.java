@@ -34,14 +34,12 @@ public class Players {
 
     public static void setPlayer(int whatPlayer){
         if(whatPlayer == 1) {
-            //todo add colors to choose from and icons;
             HumanAndBot.currentPlayer = HumanAndBot.Player1 = Input.string("Whats your name player1?");
             HumanAndBot.iconPlayer1 = (Input.menu("Do you want to customise your icon for the player?", "Yes", "No").equals("Yes") ?
             Input.onlyString("Choose a letter from the Alphabet only (a-z) and max 1 character. Default: O").toUpperCase() : "O");
             HumanAndBot.currentIcon = HumanAndBot.iconPlayer1;
         }
         else {
-            //todo add colors to choose from and icons;
             HumanAndBot.Player2 = Input.string("Whats your name player2?");
             HumanAndBot.iconPlayer2 = (Input.menu("Do you want to customise your icon for the player?", "Yes", "No").equals("Yes") ?
                     Input.onlyString("Choose a letter from the Alphabet only (a-z) and max 1 character. Default: X ").toUpperCase() : "X");

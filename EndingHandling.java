@@ -7,9 +7,6 @@ public class EndingHandling {
 
     private static void doYouWantToPlayANewGame(){
         String newGame = Input.menu("Do you want to play again?", "No i am finished", "Yes with same settings", "Yes with new settings");
-
-        // switch case here
-
         if(newGame.equals("No i am finished")){
             Input.print("Thank you for playing");
             System.exit(0);
