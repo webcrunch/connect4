@@ -1,14 +1,17 @@
 public class CheckResult {
 
     public static boolean tieTheBoard() {
-        // check if we have a win, then it is not a tie
+        StringBuilder checkIcon = new StringBuilder();
+        checkIcon.append(HumanAndBot.iconPlayer1);
+        checkIcon.append(HumanAndBot.iconPlayer2);
+         // check if we have a win, then it is not a tie
          if(getIsAWin()){
             return false;
         }
         // otherwise check if the board is full, then it is a tie
         for (String[] row : Board.board) {
             for (String cell : row) {
-                if (!"XO".contains(cell)) {
+                if (!checkIcon.toString().contains(cell)) {
                     // found an empty space, not a tie
                     return false;
                 }
