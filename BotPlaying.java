@@ -9,18 +9,18 @@ public class BotPlaying {
             System.out.print(ConsoleColors.RESET);
             System.out.print("." + ConsoleColors.BLUE_UNDERLINED.repeat(5));
             System.out.print(ConsoleColors.WHITE);
-            Input.sleep(2000);
+            Input.sleep(1000);
             System.out.println();
             System.out.print(ConsoleColors.RESET);
             Board.dropToBoardPlayer(Input.randomizer(0, 6));
-            Input.sleep(2000);
+            Input.sleep(1000);
         } else {
             System.out.print("." + ConsoleColors.BLUE_UNDERLINED.repeat(5));
-            System.out.print(".. Hard Thinking.." + ConsoleColors.BLUE_UNDERLINED);
+            System.out.print("\n.. Hard Thinking.." + ConsoleColors.BLUE_UNDERLINED);
             System.out.print(ConsoleColors.RESET);
-            System.out.print("." + ConsoleColors.BLUE_UNDERLINED.repeat(5));
+            System.out.print(".\n" + ConsoleColors.BLUE_UNDERLINED.repeat(5));
             System.out.print(ConsoleColors.WHITE);
-            Input.sleep(2000);
+            Input.sleep(1000);
             System.out.println();
             System.out.print(ConsoleColors.RESET);
             // check if board is empty method. If it is empty then it is player 1s first move
@@ -29,8 +29,7 @@ public class BotPlaying {
             } else {
                 Board.dropToBoardPlayer(totalPieceOnTheBoard());
             }
-
-            Input.sleep(2000);
+            Input.sleep(1000);
         }
     }
 
@@ -51,8 +50,7 @@ public class BotPlaying {
                 if (cell.equals(" ")) numberOfSpaces++;
             }
         }
-        return (numberOfSpaces == 6 * 7) ? true : false;
-
+        return numberOfSpaces == 6 * 7;
     }
 
 
